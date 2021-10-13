@@ -9,7 +9,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: ScreenTextureBlend
   m_Shader: {fileID: 4800000, guid: 781da9ede2a014d4cb09e272fdb81420, type: 3}
-  m_ShaderKeywords: B1
+  m_ShaderKeywords: B2
   m_LightmapFlags: 5
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -44,7 +44,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Gradient:
-        m_Texture: {fileID: 2800000, guid: c3323d8a6395d43d883c6c47a4e924d1, type: 3}
+        m_Texture: {fileID: 2800000, guid: 74c10900b5f8348eab31e296c9d0fab5, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:

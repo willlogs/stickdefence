@@ -1,0 +1,197 @@
+fileFormatVersion: 2
+guid: 8aeb9352d47f42046b9ea067338eaf36
+timeCreated: 1586901700
+licenseType: Store
+ModelImporter:
+  serializedVersion: 21
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: SM_Veh_Small_Tank_01_Cannon
+    100004: SM_Veh_Small_Tank_01_Track_Wheel_l_1
+    100006: SM_Veh_Small_Tank_01_Track_Wheel_l_2
+    100008: SM_Veh_Small_Tank_01_Track_Wheel_l_3
+    100010: SM_Veh_Small_Tank_01_Track_Wheel_l_4
+    100012: SM_Veh_Small_Tank_01_Track_Wheel_l_5
+    100014: SM_Veh_Small_Tank_01_Track_Wheel_l_6
+    100016: SM_Veh_Small_Tank_01_Track_Wheel_l_7
+    100018: SM_Veh_Small_Tank_01_Track_Wheel_l_8
+    100020: SM_Veh_Small_Tank_01_Track_Wheel_r_1
+    100022: SM_Veh_Small_Tank_01_Track_Wheel_r_2
+    100024: SM_Veh_Small_Tank_01_Track_Wheel_r_3
+    100026: SM_Veh_Small_Tank_01_Track_Wheel_r_4
+    100028: SM_Veh_Small_Tank_01_Track_Wheel_r_5
+    100030: SM_Veh_Small_Tank_01_Track_Wheel_r_6
+    100032: SM_Veh_Small_Tank_01_Track_Wheel_r_7
+    100034: SM_Veh_Small_Tank_01_Track_Wheel_r_8
+    100036: SM_Veh_Small_Tank_01_Turret
+    100038: SM_Veh_Small_Tank_02_Track_l
+    100040: SM_Veh_Small_Tank_02_Track_r
+    100042: pCube513
+    100044: pCube514
+    400000: //RootNode
+    400002: SM_Veh_Small_Tank_01_Cannon
+    400004: SM_Veh_Small_Tank_01_Track_Wheel_l_1
+    400006: SM_Veh_Small_Tank_01_Track_Wheel_l_2
+    400008: SM_Veh_Small_Tank_01_Track_Wheel_l_3
+    400010: SM_Veh_Small_Tank_01_Track_Wheel_l_4
+    400012: SM_Veh_Small_Tank_01_Track_Wheel_l_5
+    400014: SM_Veh_Small_Tank_01_Track_Wheel_l_6
+    400016: SM_Veh_Small_Tank_01_Track_Wheel_l_7
+    400018: SM_Veh_Small_Tank_01_Track_Wheel_l_8
+    400020: SM_Veh_Small_Tank_01_Track_Wheel_r_1
+    400022: SM_Veh_Small_Tank_01_Track_Wheel_r_2
+    400024: SM_Veh_Small_Tank_01_Track_Wheel_r_3
+    400026: SM_Veh_Small_Tank_01_Track_Wheel_r_4
+    400028: SM_Veh_Small_Tank_01_Track_Wheel_r_5
+    400030: SM_Veh_Small_Tank_01_Track_Wheel_r_6
+    400032: SM_Veh_Small_Tank_01_Track_Wheel_r_7
+    400034: SM_Veh_Small_Tank_01_Track_Wheel_r_8
+    400036: SM_Veh_Small_Tank_01_Turret
+    400038: SM_Veh_Small_Tank_02_Track_l
+    400040: SM_Veh_Small_Tank_02_Track_r
+    400042: pCube513
+    400044: pCube514
+    2300000: //RootNode
+    2300002: SM_Veh_Small_Tank_01_Cannon
+    2300004: SM_Veh_Small_Tank_01_Track_Wheel_l_1
+    2300006: SM_Veh_Small_Tank_01_Track_Wheel_l_2
+    2300008: SM_Veh_Small_Tank_01_Track_Wheel_l_3
+    2300010: SM_Veh_Small_Tank_01_Track_Wheel_l_4
+    2300012: SM_Veh_Small_Tank_01_Track_Wheel_l_5
+    2300014: SM_Veh_Small_Tank_01_Track_Wheel_l_6
+    2300016: SM_Veh_Small_Tank_01_Track_Wheel_l_7
+    2300018: SM_Veh_Small_Tank_01_Track_Wheel_l_8
+    2300020: SM_Veh_Small_Tank_01_Track_Wheel_r_1
+    2300022: SM_Veh_Small_Tank_01_Track_Wheel_r_2
+    2300024: SM_Veh_Small_Tank_01_Track_Wheel_r_3
+    2300026: SM_Veh_Small_Tank_01_Track_Wheel_r_4
+    2300028: SM_Veh_Small_Tank_01_Track_Wheel_r_5
+    2300030: SM_Veh_Small_Tank_01_Track_Wheel_r_6
+    2300032: SM_Veh_Small_Tank_01_Track_Wheel_r_7
+    2300034: SM_Veh_Small_Tank_01_Track_Wheel_r_8
+    2300036: SM_Veh_Small_Tank_01_Turret
+    2300038: SM_Veh_Small_Tank_02_Track_l
+    2300040: SM_Veh_Small_Tank_02_Track_r
+    2300042: pCube513
+    2300044: pCube514
+    3300000: //RootNode
+    3300002: SM_Veh_Small_Tank_01_Cannon
+    3300004: SM_Veh_Small_Tank_01_Track_Wheel_l_1
+    3300006: SM_Veh_Small_Tank_01_Track_Wheel_l_2
+    3300008: SM_Veh_Small_Tank_01_Track_Wheel_l_3
+    3300010: SM_Veh_Small_Tank_01_Track_Wheel_l_4
+    3300012: SM_Veh_Small_Tank_01_Track_Wheel_l_5
+    3300014: SM_Veh_Small_Tank_01_Track_Wheel_l_6
+    3300016: SM_Veh_Small_Tank_01_Track_Wheel_l_7
+    3300018: SM_Veh_Small_Tank_01_Track_Wheel_l_8
+    3300020: SM_Veh_Small_Tank_01_Track_Wheel_r_1
+    3300022: SM_Veh_Small_Tank_01_Track_Wheel_r_2
+    3300024: SM_Veh_Small_Tank_01_Track_Wheel_r_3
+    3300026: SM_Veh_Small_Tank_01_Track_Wheel_r_4
+    3300028: SM_Veh_Small_Tank_01_Track_Wheel_r_5
+    3300030: SM_Veh_Small_Tank_01_Track_Wheel_r_6
+    3300032: SM_Veh_Small_Tank_01_Track_Wheel_r_7
+    3300034: SM_Veh_Small_Tank_01_Track_Wheel_r_8
+    3300036: SM_Veh_Small_Tank_01_Turret
+    3300038: SM_Veh_Small_Tank_02_Track_l
+    3300040: SM_Veh_Small_Tank_02_Track_r
+    3300042: pCube513
+    3300044: pCube514
+    4300000: SM_Veh_Small_Tank_01
+    4300002: SM_Veh_Small_Tank_01_Turret
+    4300004: SM_Veh_Small_Tank_01_Cannon
+    4300006: SM_Veh_Small_Tank_02_Track_l
+    4300008: SM_Veh_Small_Tank_01_Track_Wheel_l_1
+    4300010: SM_Veh_Small_Tank_01_Track_Wheel_l_2
+    4300012: SM_Veh_Small_Tank_01_Track_Wheel_l_3
+    4300014: SM_Veh_Small_Tank_01_Track_Wheel_l_4
+    4300016: SM_Veh_Small_Tank_01_Track_Wheel_l_5
+    4300018: SM_Veh_Small_Tank_01_Track_Wheel_l_6
+    4300020: SM_Veh_Small_Tank_01_Track_Wheel_l_7
+    4300022: SM_Veh_Small_Tank_01_Track_Wheel_l_8
+    4300024: SM_Veh_Small_Tank_02_Track_r
+    4300026: SM_Veh_Small_Tank_01_Track_Wheel_r_1
+    4300028: SM_Veh_Small_Tank_01_Track_Wheel_r_2
+    4300030: SM_Veh_Small_Tank_01_Track_Wheel_r_3
+    4300032: SM_Veh_Small_Tank_01_Track_Wheel_r_4
+    4300034: SM_Veh_Small_Tank_01_Track_Wheel_r_5
+    4300036: SM_Veh_Small_Tank_01_Track_Wheel_r_6
+    4300038: SM_Veh_Small_Tank_01_Track_Wheel_r_7
+    4300040: SM_Veh_Small_Tank_01_Track_Wheel_r_8
+    4300042: pCube513
+    4300044: pCube514
+  materials:
+    importMaterials: 0
+    materialName: 1
+    materialSearch: 2
+  animations:
+    legacyGenerateAnimations: 0
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 0
+    importBlendShapes: 0
+    importCameras: 0
+    importLights: 0
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 0
+    keepQuads: 0
+    weldVertices: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 5
+    normalImportMode: 1
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 0
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
