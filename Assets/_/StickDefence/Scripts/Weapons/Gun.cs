@@ -13,6 +13,19 @@ namespace DB.StickDefence.Weapons
 
         private bool _canShoot = false;
 
+        public void Shoot(Vector3 target, SquadManager squad){
+            if (_canShoot)
+            {
+                target.y = _bulletpoint.position.y;
+                GameObject bulletGO = Instantiate(_bulletPrefab);
+                bulletGO.transform.position = _bulletpoint.position;
+
+                Bullet b = bulletGO.GetComponent<Bullet>();
+                b.GetShot(target - bulletGO.transform.position, squad);
+                StartCoroutine(Rest());
+            }
+        }
+
         [Button]
         public void Shoot(Vector3 target)
         {

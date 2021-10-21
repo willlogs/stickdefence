@@ -9,9 +9,16 @@ namespace DB.StickDefence.AI
 {
     public class GunAutoShooter : MonoBehaviour
     {
+        public void SetSquad(SquadManager squad){
+            _squad = squad;
+            _hasSquad = true;
+        }
+
         [SerializeField] private LayerMask _layerMask;
         [SerializeField] private Gun _gun;
         [SerializeField] private List<Transform> _targets = new List<Transform>();
+        [SerializeField] private SquadManager _squad;
+        [SerializeField] private bool _hasSquad = false;
 
         private bool _listLock = false;
 
@@ -42,7 +49,13 @@ namespace DB.StickDefence.AI
             if(_targets.Count > 0){
                 // shoot the first one!
                 Transform target = _targets[0];
-                _gun.Shoot(target.position);
+                
+                if(_hasSquad){
+                    _gun.Shoot(target.position, _squad);
+                }
+                else{
+                    _gun.Shoot(target.position);
+                }
             }
         }
     }

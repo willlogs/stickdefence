@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 3516573292307460815}
   - component: {fileID: -7153836216811613387}
   m_Layer: 9
-  m_Name: BulletSample
+  m_Name: BulletSample_Weak
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 3082248052417859975}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.14, y: 1.77, z: 2.5}
-  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
+  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -127,7 +127,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _squadManager: {fileID: 0}
-  damage: 20
+  damage: 5
   _hasSquad: 0
   _rb: {fileID: 3082248052417859974}
   _shootingSpeed: 40

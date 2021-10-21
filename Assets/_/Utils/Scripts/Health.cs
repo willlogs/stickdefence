@@ -9,12 +9,19 @@ namespace DB.Utils
     {
         // TODO: Change OnChange to 2 types: On reduce, On Increase
         public event Action<float> OnChange;
+        public float capacity = 100f;
 
         [SerializeField] private float amount = 100f;
 
         public float Amount{
-            get;
-            set;
+            get{
+                return amount;
+            }
+
+            set{
+                amount = value;
+                OnChange?.Invoke(amount);
+            }
         }
     }
 }
