@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using DG.Tweening;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace DB.StickDefence
 {
-    public class PlayerBase : MonoBehaviour
+    public class Upgradable : MonoBehaviour
     {
+        public UnityEvent OnFullyUpgraded;
+
         [Button]
         public void Upgrade()
         {
@@ -21,6 +24,9 @@ namespace DB.StickDefence
                 _upgrades[_level].transform.position = lastPos + Vector3.up * 5;
                 _upgrades[_level].transform.DOMove(lastPos, 0.3f);
                 _level++;
+            }else if(!_isComplete){
+                _isComplete = true;
+                OnFullyUpgraded?.Invoke();
             }
         }
 
@@ -30,6 +36,7 @@ namespace DB.StickDefence
         [SerializeField] private GameObject _spawnParticle;
         [SerializeField] private GameObject[] _upgrades;
         [SerializeField] private int _level = 0;
+        private bool _isComplete = false;
 
         private void Start()
         {

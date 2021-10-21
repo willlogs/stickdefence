@@ -8,7 +8,8 @@ namespace DB.StickDefence
     public class StickmanController : MonoBehaviour
     {
         [SerializeField] private TouchStick _stick;
-        [SerializeField] private float _changeSpeed = 1, _lerpSpeed = 1;
+        [SerializeField] private Rigidbody _rb;
+        [SerializeField] private float _changeSpeed = 1, _lerpSpeed = 1, _movementSpeed = 2f;
         [SerializeField] private Animator _animator;
 
         private bool _isMoving = false;
@@ -41,12 +42,13 @@ namespace DB.StickDefence
                     _stick._diff.normalized.y
                 );
 
-                transform.position = Vector3.Lerp(
-                    transform.position,
-                    transform.position + _posChange * _changeSpeed,
-                    Time.unscaledDeltaTime * _lerpSpeed
-                );
+                // transform.position = Vector3.Lerp(
+                //     transform.position,
+                //     transform.position + _posChange * _changeSpeed,
+                //     Time.unscaledDeltaTime * _lerpSpeed
+                // );
                 
+                _rb.velocity = _posChange.normalized * _movementSpeed;
                 transform.forward = _posChange.normalized;
             }
         }
