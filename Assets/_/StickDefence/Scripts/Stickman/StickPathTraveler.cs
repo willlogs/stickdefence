@@ -23,6 +23,7 @@ namespace DB.War.Stickman
 
         [SerializeField] private Transform goalT;
         [SerializeField] private Stickman stickman;
+        [SerializeField] private int areaCode = 0;
 
         private bool isWaitingForNextCorner;
         private int cornerIdx = 0;
