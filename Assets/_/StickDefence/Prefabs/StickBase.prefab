@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1508640116
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1508640117}
+  m_Layer: 8
+  m_Name: mainGoal
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1508640117
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1508640116}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5046567100829752080}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &92371847810135341
 GameObject:
   m_ObjectHideFlags: 0
@@ -323,7 +353,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1734965464477434648
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1513,6 +1543,7 @@ GameObject:
   - component: {fileID: 408951399741231258}
   - component: {fileID: 1734965463911473502}
   - component: {fileID: 7812311834411095042}
+  - component: {fileID: 3812781890678770250}
   m_Layer: 8
   m_Name: StickBase
   m_TagString: Untagged
@@ -1541,6 +1572,7 @@ Transform:
   - {fileID: 1734965464196150008}
   - {fileID: 1734965464477434648}
   - {fileID: 90098552909422458}
+  - {fileID: 1508640117}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1591,14 +1623,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27f1388ea7ef1ce428eade6f40ff1105, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainGoalT: {fileID: 1508640117}
   animator: {fileID: 2919178959054042730}
   goalT: {fileID: 1734965464196150008}
   targetT: {fileID: 90098552909422458}
   runningSpeed: 7
   goalDistanceThreshold: 0.5
   lookRotationSpeed: 5
+  pathfindingInterval: 0.1
   rb: {fileID: 408951399741231258}
-  joystick: {fileID: 1734965464477434649}
+  pathTraveler: {fileID: 3812781890678770250}
 --- !u!136 &7812311834411095042
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1613,6 +1647,20 @@ CapsuleCollider:
   m_Height: 2.584444
   m_Direction: 1
   m_Center: {x: 0, y: 1.3253486, z: 0}
+--- !u!114 &3812781890678770250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8093632440988838147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e6d1914188fd86438e6dbd37d7a38f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  goalT: {fileID: 1734965464196150008}
+  stickman: {fileID: 1734965463911473502}
 --- !u!1 &8170299955498800218
 GameObject:
   m_ObjectHideFlags: 0
@@ -1747,7 +1795,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 90098552909422458}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: target
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1839,7 +1887,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8787890605885885851}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: StorageBase
   m_TagString: Untagged
   m_Icon: {fileID: 0}

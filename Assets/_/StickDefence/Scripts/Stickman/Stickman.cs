@@ -1,4 +1,5 @@
 using DB.Utils;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,11 +8,14 @@ namespace DB.War.Stickman
 {
     public class Stickman : MonoBehaviour
     {
+        public event Action OnGoalReached;
+        public Transform mainGoalT;
+
         [SerializeField] private Animator animator;
         [SerializeField] private Transform goalT, targetT; // move to goal and look at target
-        [SerializeField] private float runningSpeed, goalDistanceThreshold, lookRotationSpeed = 5;
+        [SerializeField] private float runningSpeed, goalDistanceThreshold, lookRotationSpeed = 5, pathfindingInterval = 0.1f;
         [SerializeField] private Rigidbody rb;
-        [SerializeField] private TouchStick joystick;
+        [SerializeField] private StickPathTraveler pathTraveler;
 
         private bool _isRunning = false;
 
@@ -19,11 +23,22 @@ namespace DB.War.Stickman
         {
             rb = GetComponent<Rigidbody>();
             goalT.parent = null;
+            mainGoalT.parent = null;
+            pathfindingInterval += UnityEngine.Random.Range(0f, 0.5f);
+            StartCoroutine(Pathfind());
         }
 
-        private void Update()
+        private IEnumerator Pathfind()
         {
-            MoveGoal();
+            while (true)
+            {
+                Vector3 diff = mainGoalT.position - transform.position;
+                if (diff.magnitude > goalDistanceThreshold)
+                {
+                    pathTraveler.GoToLocation(mainGoalT.position);
+                }
+                yield return new WaitForSecondsRealtime(pathfindingInterval);
+            }
         }
 
         private void FixedUpdate()
@@ -35,7 +50,9 @@ namespace DB.War.Stickman
         private void MoveStickman()
         {
             Vector3 goalDiff = goalT.position - transform.position;
+            goalDiff.y = 0;
             Vector3 targetDiff = targetT.position - transform.position;
+            targetDiff.y = 0;
 
             float goalTargetDot = Vector3.Dot(goalDiff, targetDiff);
             animator.SetFloat("WalkSpeed", Mathf.Sign(goalTargetDot));
@@ -56,14 +73,9 @@ namespace DB.War.Stickman
                 {
                     _isRunning = false;
                     animator.SetBool("Run", false);
+                    OnGoalReached?.Invoke();
                 }
             }
-        }
-
-        private void MoveGoal()
-        {
-            Vector3 diff = new Vector3(joystick._diff.x, 0, joystick._diff.y);
-            goalT.position += diff;
         }
     }
 }
