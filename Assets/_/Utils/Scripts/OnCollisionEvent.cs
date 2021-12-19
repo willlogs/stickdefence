@@ -13,6 +13,8 @@ namespace PT.Utils
 
         private void OnCollisionEnter(Collision collision)
         {
+            if (collision.collider.isTrigger)
+                return;
             int layerTest = layerMask.value & (1 << collision.gameObject.layer);
             if (layerTest > 0){
                 OnEnter?.Invoke(collision);

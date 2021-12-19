@@ -13,6 +13,7 @@ namespace DB.Utils
         [SerializeField] private Collider _selfCollider;
         [SerializeField] private Rigidbody _mainRB;
         [SerializeField] private SkinnedMeshRenderer _mesh;
+        [SerializeField] private Component[] _destroyOnActivation;
 
         private Rigidbody[] _rbs;
         private Collider[] _colliders;
@@ -20,8 +21,13 @@ namespace DB.Utils
         [Button("Activate")]
         public void Activate(float damper = 0f)
         {
+            foreach(Component c in _destroyOnActivation)
+            {
+                Destroy(c);
+            }
+
             transform.parent = null;
-            _mesh.transform.parent = null;
+            //_mesh.transform.parent = null;
             _isActive = true;
             SetActivation(damper);
         }
@@ -69,7 +75,8 @@ namespace DB.Utils
             {
                 try
                 {
-                    c.enabled = _isActive;
+                    if(!c.isTrigger)
+                        c.enabled = _isActive;
                 }
                 catch { }
             }

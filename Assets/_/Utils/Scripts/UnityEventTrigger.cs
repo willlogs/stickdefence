@@ -13,5 +13,13 @@ namespace PT.Utils
         {
             e?.Invoke();
         }
+
+        public void TriggerWithDelay(float delay)
+        {
+            TimeManager.Instance.DoWithDelay(delay, () =>
+            {
+                e?.Invoke();
+            });
+        }
     }
 }
