@@ -27,6 +27,12 @@ namespace DB.War.Stack
                     parent.topT.position,
                     Time.fixedDeltaTime * lerpSpeed
                 );
+
+                transform.rotation = Quaternion.Slerp(
+                    transform.rotation,
+                    parent.transform.rotation,
+                    Time.fixedDeltaTime * lerpSpeed
+                );
             }
         }
     }

@@ -9,6 +9,8 @@ namespace DB.War.Stickman
     public class Stickman : MonoBehaviour
     {
         public event Action OnGoalReached;
+        public event Action OnKilledByGun;
+
         public Transform mainGoalT;
 
         [SerializeField] private Animator animator;
@@ -16,6 +18,7 @@ namespace DB.War.Stickman
         [SerializeField] private float runningSpeed, goalDistanceThreshold, lookRotationSpeed = 5, pathfindingInterval = 0.1f;
         [SerializeField] private Rigidbody rb;
         [SerializeField] private StickPathTraveler pathTraveler;
+        [SerializeField] private BoolCondition lookForwardCondition;
 
         private bool _isRunning = false;
 
@@ -25,20 +28,6 @@ namespace DB.War.Stickman
             goalT.parent = null;
             mainGoalT.parent = null;
             pathfindingInterval += UnityEngine.Random.Range(0f, 0.5f);
-            StartCoroutine(Pathfind());
-        }
-
-        private IEnumerator Pathfind()
-        {
-            while (true)
-            {
-                Vector3 diff = mainGoalT.position - transform.position;
-                if (diff.magnitude > goalDistanceThreshold)
-                {
-                    pathTraveler.GoToLocation(mainGoalT.position);
-                }
-                yield return new WaitForSecondsRealtime(pathfindingInterval);
-            }
         }
 
         private void FixedUpdate()
@@ -65,7 +54,11 @@ namespace DB.War.Stickman
                     animator.SetBool("Run", true);
                 }
                 rb.velocity = goalDiff.normalized * runningSpeed;
-                transform.forward = Vector3.Slerp(transform.forward, targetDiff, Time.fixedDeltaTime * lookRotationSpeed);
+
+                if (!lookForwardCondition.value)
+                {
+                    transform.forward = Vector3.Slerp(transform.forward, targetDiff, Time.fixedDeltaTime * lookRotationSpeed);
+                }
             }
             else
             {
