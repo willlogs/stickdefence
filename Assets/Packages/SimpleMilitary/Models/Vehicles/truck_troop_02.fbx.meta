@@ -1,23 +1,43 @@
 fileFormatVersion: 2
 guid: 6033b78eee0c2494899326d54ca9ac35
 ModelImporter:
-  serializedVersion: 18
+  serializedVersion: 16
   fileIDToRecycleName:
     100000: //RootNode
     100002: wheel_fl
     100004: wheel_fr
+    100006: wheel_fl1
+    100008: wheel_fl2
+    100010: wheel_fr1
+    100012: wheel_fr2
     400000: //RootNode
     400002: wheel_fl
     400004: wheel_fr
+    400006: wheel_fl1
+    400008: wheel_fl2
+    400010: wheel_fr1
+    400012: wheel_fr2
     2300000: //RootNode
     2300002: wheel_fl
     2300004: wheel_fr
+    2300006: wheel_fl1
+    2300008: wheel_fl2
+    2300010: wheel_fr1
+    2300012: wheel_fr2
     3300000: //RootNode
     3300002: wheel_fl
     3300004: wheel_fr
+    3300006: wheel_fl1
+    3300008: wheel_fl2
+    3300010: wheel_fr1
+    3300012: wheel_fr2
     4300000: truck_troop_02
     4300002: wheel_fr
     4300004: wheel_fl
+    4300006: wheel_fr1
+    4300008: wheel_fl1
+    4300010: wheel_fr2
+    4300012: wheel_fl2
     9500000: //RootNode
   materials:
     importMaterials: 0
@@ -46,13 +66,11 @@ ModelImporter:
     generateSecondaryUV: 0
     useFileUnits: 1
     optimizeMeshForGPU: 1
-    keepQuads: 0
     weldVertices: 1
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
-    useFileScale: 0
   tangentSpace:
     normalSmoothAngle: 10
     splitTangentsAcrossUV: 0
@@ -75,5 +93,3 @@ ModelImporter:
   animationType: 0
   additionalBone: 1
   userData: 
-  assetBundleName: 
-  assetBundleVariant: 

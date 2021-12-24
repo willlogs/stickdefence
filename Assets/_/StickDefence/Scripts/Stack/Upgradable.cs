@@ -44,7 +44,7 @@ namespace DB.War.Stack
 
         private void Update()
         {
-            if (hasStacker && level < parts.Length && stacker.GetAmmoBox())
+            if (hasStacker && level < parts.Length && stacker.GetAmmoBox(transform))
             {
                 Upgrade();
             }

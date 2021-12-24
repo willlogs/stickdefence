@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: c4da10825984cdb46b792a61fde4cdf9
 ModelImporter:
-  serializedVersion: 18
+  serializedVersion: 16
   fileIDToRecycleName:
     100000: radar_turret
     100002: //RootNode
@@ -41,13 +41,11 @@ ModelImporter:
     generateSecondaryUV: 0
     useFileUnits: 1
     optimizeMeshForGPU: 1
-    keepQuads: 0
     weldVertices: 1
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
-    useFileScale: 0
   tangentSpace:
     normalSmoothAngle: 10
     splitTangentsAcrossUV: 0
@@ -70,5 +68,3 @@ ModelImporter:
   animationType: 0
   additionalBone: 1
   userData: 
-  assetBundleName: 
-  assetBundleVariant: 

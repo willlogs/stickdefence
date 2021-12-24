@@ -42,6 +42,30 @@ namespace DB.War.Stack
             }
         }
 
+        public bool GetAmmoBox(Transform target)
+        {
+            bool res = GetAmmoBox();
+            if (res)
+            {
+                GameObject nextDummy = dummies[0];
+                foreach(GameObject go in dummies)
+                {
+                    if (!go.activeSelf)
+                    {
+                        nextDummy = go;
+                    }
+                }
+
+                nextDummy.transform.position = transform.position;
+                nextDummy.transform.DOMove(target.position, 0.5f).OnComplete(() =>
+                {
+                    nextDummy.SetActive(false);
+                });
+            }
+
+            return res;
+        }
+
         [Button]
         public void AddAmmoBox()
         {
@@ -81,9 +105,10 @@ namespace DB.War.Stack
 
         [SerializeField] private AmmoBox firstAmmoBox;
         [SerializeField] private List<AmmoBox> stack;
+        [SerializeField] private List<GameObject> dummies;
         [SerializeField] private int score = 0;
-        [SerializeField] private int warmup = 50;
-        [SerializeField] private GameObject ammoBoxPrefab;
+        [SerializeField] private int warmup = 50, dummyWarmup = 50;
+        [SerializeField] private GameObject ammoBoxPrefab, dummyBoxPrefab;
 
         private Transform dummyParent;
 
@@ -95,11 +120,30 @@ namespace DB.War.Stack
                 AddAmmoBox();
             }
 
+            for(int i = 0; i < dummyWarmup; i++)
+            {
+                GameObject go = Instantiate(dummyBoxPrefab);
+                dummies.Add(go);
+                go.transform.parent = dummyParent;
+                go.SetActive(false);
+            }
+
             for (int i = 0; i < warmup; i++)
             {
                 GetAmmoBox();
             }
             GetAmmoBox();
+        }
+
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                for (int i = 0; i < warmup; i++)
+                {
+                    AddAmmoBox();
+                }
+            }
         }
 
         private IEnumerator BringBoxHome(Transform boxT)

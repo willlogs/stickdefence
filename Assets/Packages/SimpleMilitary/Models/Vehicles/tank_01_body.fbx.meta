@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: 16d71d1768bc32447876d5fd7531bb7b
 ModelImporter:
-  serializedVersion: 18
+  serializedVersion: 16
   fileIDToRecycleName:
     100000: barrel
     100002: lid01
@@ -56,13 +56,11 @@ ModelImporter:
     generateSecondaryUV: 0
     useFileUnits: 1
     optimizeMeshForGPU: 1
-    keepQuads: 0
     weldVertices: 1
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
-    useFileScale: 0
   tangentSpace:
     normalSmoothAngle: 10
     splitTangentsAcrossUV: 0
@@ -85,5 +83,3 @@ ModelImporter:
   animationType: 0
   additionalBone: 1
   userData: 
-  assetBundleName: 
-  assetBundleVariant: 

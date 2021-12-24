@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: 306a5f62a7aa5f442a17013afe19d6cd
 ModelImporter:
-  serializedVersion: 18
+  serializedVersion: 16
   fileIDToRecycleName:
     100000: //RootNode
     100002: Road_Dirt_Long
@@ -46,13 +46,11 @@ ModelImporter:
     generateSecondaryUV: 0
     useFileUnits: 1
     optimizeMeshForGPU: 1
-    keepQuads: 0
     weldVertices: 1
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
-    useFileScale: 0
   tangentSpace:
     normalSmoothAngle: 10
     splitTangentsAcrossUV: 0
@@ -75,5 +73,3 @@ ModelImporter:
   animationType: 0
   additionalBone: 1
   userData: 
-  assetBundleName: 
-  assetBundleVariant: 
