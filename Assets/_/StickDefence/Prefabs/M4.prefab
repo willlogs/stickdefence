@@ -298,7 +298,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   restBetweenShots: 5
-  bulletPrefab: {fileID: 5836818602859692720, guid: 7dd3b1325e5b8eb4d92037aba223530e, type: 3}
+  bulletPrefab: {fileID: 1565650512526518565, guid: 526172d6827e3f2459699497ffeabe25, type: 3}
   gunTargetT: {fileID: 0}
   bulletPointT: {fileID: 8282751218309470450}
 --- !u!114 &1559581013502220437
@@ -318,6 +318,7 @@ MonoBehaviour:
   turret: {fileID: 1563077529489584145}
   aimT: {fileID: 0}
   turretRotation: 0
+  resetTurret: 0
   hasTargetCondition: {fileID: 1559581013502220436}
 --- !u!114 &1559581013502220436
 MonoBehaviour:

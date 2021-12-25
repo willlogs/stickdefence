@@ -56,6 +56,7 @@ namespace DB.War.Stack
                     }
                 }
 
+                nextDummy.SetActive(true);
                 nextDummy.transform.position = transform.position;
                 nextDummy.transform.DOMove(target.position, 0.5f).OnComplete(() =>
                 {
@@ -69,7 +70,6 @@ namespace DB.War.Stack
         [Button]
         public void AddAmmoBox()
         {
-            print(score);
             if(score == 0)
             {
                 firstAmmoBox.gameObject.SetActive(true);

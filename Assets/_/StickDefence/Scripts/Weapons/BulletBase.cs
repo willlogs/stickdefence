@@ -8,6 +8,7 @@ namespace DB.War.Weapons
     public class BulletBase : MonoBehaviour
     {
         public UnityEvent OnContact;
+        public int damage = 50;
 
         public void GetShot(Vector3 dir, Transform tar)
         {
@@ -19,7 +20,7 @@ namespace DB.War.Weapons
         public void GetShot(Vector3 dir)
         {
             rb.velocity = dir.normalized * speed;
-            transform.forward = dir.normalized;
+            transform.up = dir.normalized;
             gotShot = true;
         }
 
@@ -42,6 +43,7 @@ namespace DB.War.Weapons
                 }
 
                 rb.velocity = dir * speed;
+                transform.up = dir.normalized;
             }
         }
 

@@ -10,12 +10,36 @@ namespace DB.War.Weapons
     {
         public void Enter(Collider other)
         {
+            if (other.isTrigger)
+                return;
+
             targets.Add(other.transform);
+
+            Stickman.Stickman stick = other.gameObject.GetComponent<Stickman.Stickman>();
+            if(stick != null)
+            {
+                stick.OnKilledByGun += OneGotKilled;
+            }
+        }
+
+        public void OneGotKilled(Stickman.Stickman stick)
+        {
+            print("killed");
+            targets.Remove(stick.transform);
+            stick.OnKilledByGun -= OneGotKilled;
         }
 
         public void Exit(Collider other)
         {
-            targets.Remove(other.transform);
+            if (other.isTrigger)
+                return;
+
+            Stickman.Stickman stick = other.gameObject.GetComponent<Stickman.Stickman>();
+            if (stick != null)
+            {
+                targets.Remove(other.transform);
+                stick.OnKilledByGun -= OneGotKilled;
+            }
         }
 
         [SerializeField] private List<Transform> targets;
@@ -23,6 +47,7 @@ namespace DB.War.Weapons
         [SerializeField] private Transform turret, aimT;
         [SerializeField] private bool turretRotation, resetTurret;
         [SerializeField] private BoolCondition hasTargetCondition;
+        [SerializeField] private int forwMultiplier = 1;
 
         private Quaternion defTurretRot;
 
@@ -38,7 +63,7 @@ namespace DB.War.Weapons
                 hasTargetCondition.value = true;
                 if (turretRotation)
                 {
-                    Vector3 forw = targets[0].position - turret.position;
+                    Vector3 forw = forwMultiplier * (targets[0].position - turret.position);
                     forw.y = 0;
                     turret.forward = forw;
                 }

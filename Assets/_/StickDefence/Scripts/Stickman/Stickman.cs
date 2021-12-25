@@ -9,9 +9,24 @@ namespace DB.War.Stickman
     public class Stickman : MonoBehaviour
     {
         public event Action OnGoalReached;
-        public event Action OnKilledByGun;
+        public event Action<Stickman> OnKilledByGun;
 
         public Transform mainGoalT;
+
+        public void Die()
+        {
+            animator.SetTrigger("Die");
+            renderer_.material = deathMat;
+            foreach(Component c in removeOnDeath)
+            {
+                Destroy(c);
+            }
+            OnKilledByGun?.Invoke(this);
+        }
+
+        [SerializeField] private Material deathMat;
+        [SerializeField] private Renderer renderer_;
+        [SerializeField] private Component[] removeOnDeath;
 
         [SerializeField] private Animator animator;
         [SerializeField] private Transform goalT, targetT; // move to goal and look at target
@@ -20,7 +35,7 @@ namespace DB.War.Stickman
         [SerializeField] private StickPathTraveler pathTraveler;
         [SerializeField] private BoolCondition lookForwardCondition;
 
-        private bool _isRunning = false;
+        private bool _isRunning = false, isDead = false;
 
         private void Awake()
         {
@@ -32,8 +47,11 @@ namespace DB.War.Stickman
 
         private void FixedUpdate()
         {
-            targetT.position = goalT.position;
-            MoveStickman();
+            if (!isDead)
+            {
+                targetT.position = goalT.position;
+                MoveStickman();
+            }
         }
 
         private void MoveStickman()
