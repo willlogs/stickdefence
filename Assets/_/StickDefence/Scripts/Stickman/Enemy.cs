@@ -20,7 +20,7 @@ namespace DB.War.Stickman
         {
             this.target = target;
             hasTarget = false;
-            pathTraveler.SetAutoTravel(target, 5f);
+            pathTraveler.SetAutoTravel(target, 10f);
         }
 
         public void Damage(int damage)
@@ -30,6 +30,7 @@ namespace DB.War.Stickman
             {
                 health.Amount = 0;
                 Die();
+                Destroy(gameObject, 3);
             }
         }
 

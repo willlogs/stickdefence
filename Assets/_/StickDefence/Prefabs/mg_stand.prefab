@@ -305,7 +305,7 @@ MonoBehaviour:
   OnShoot:
     m_PersistentCalls:
       m_Calls: []
-  restBetweenShots: 0.05
-  bulletPrefab: {fileID: 1565650512526518565, guid: 526172d6827e3f2459699497ffeabe25, type: 3}
+  restBetweenShots: 0.1
+  bulletPrefab: {fileID: 1565650512526518565, guid: df40ac5afbfb3d84bb2203b84b07f152, type: 3}
   gunTargetT: {fileID: 6611352858984927252}
   bulletPointT: {fileID: 6611352858821621324}

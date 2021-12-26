@@ -8,10 +8,11 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Barracks_b
-  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 5
-  m_EnableInstancingVariants: 0
+  m_Shader: {fileID: 4800000, guid: ccfc7d68845db8341944b3091b59be55, type: 3}
+  m_ShaderKeywords: _ _ALPHABLEND_ON _CFXR_DITHERED_SHADOWS_OFF _CFXR_OVERLAYBLEND_RGBA
+    _CFXR_OVERLAYTEX_OFF
+  m_LightmapFlags: 1
+  m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
   stringTagMap: {}
@@ -35,7 +36,27 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _DissolveTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DistortTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DitherCustom:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _EmissionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EmmisTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _LayoutTexture:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -47,7 +68,15 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _NormalTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _OverlayTex:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -55,22 +84,108 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _Ramp:
+        m_Texture: {fileID: 2800000, guid: abc83c21d57d4a74cabe12065fa1a8b2, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SecondColorTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Floats:
+    - _AmbientPower: 0
+    - _BacklightTransmittance: 1
+    - _BlendingType: 0
     - _BumpScale: 1
+    - _CFXR_DITHERED_SHADOWS: 0
+    - _CFXR_OVERLAYBLEND: 0
+    - _CFXR_OVERLAYTEX: 0
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
+    - _DirLightScreenAtten: 1
+    - _DirectLightingRamp: 1
+    - _DissolveSmooth: 0.1
+    - _Distort: 0.1
     - _DstBlend: 0
+    - _EdgeFadePow: 1
     - _EmissionScaleUI: 0
+    - _FadeAlongU: 0
+    - _FresnelBrightness: 0
+    - _FresnelPower: 0
+    - _FresnelShadowDropoff: 0
+    - _GlossMapScale: 1
     - _Glossiness: 0.5
+    - _GlossyReflections: 1
+    - _HdrBoost: 0
+    - _HdrMultiply: 2
+    - _HighIntensity: 2.44
+    - _IndirectLightingMix: 0.5
+    - _InvertDissolveTex: 0
+    - _LayoutTexturePower: 0
+    - _LightScalar: 1.81
+    - _LightingWorldPosStrength: 0.2
+    - _LightmapPower: 1
+    - _LowIntensity: 1.06
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
+    - _OutlineSize: 10
     - _Parallax: 0.02
+    - _RampLevels: 2
+    - _RampSmooth: 0.1
+    - _RampThreshold: 0.5
+    - _RimAlpha: 0
+    - _RimDropOff: 0
+    - _RimPower: 1.01
+    - _SecondColorSmooth: 0.2
+    - _ShadowPower: 0
+    - _ShadowStrength: 1
+    - _SingleChannel: 0
+    - _SmoothnessTextureChannel: 0
+    - _SoftParticlesFadeDistanceFar: 1
+    - _SoftParticlesFadeDistanceNear: 0
+    - _SpecularHighlights: 1
     - _SrcBlend: 1
+    - _UVDistortionAdd: 0
     - _UVSec: 0
+    - _UseAlphaClip: 0
+    - _UseBackLighting: 0
+    - _UseDirLight: 0
+    - _UseDissolve: 0
+    - _UseEF: 0
+    - _UseEmission: 0
+    - _UseFB: 0
+    - _UseFontColor: 0
+    - _UseLightMap: 0
+    - _UseLighting: 0
+    - _UseLightingWorldPosOffset: 0
+    - _UseNormalMap: 0
+    - _UseSP: 0
+    - _UseSecondColor: 0
+    - _UseUV2Distortion: 0
+    - _UseUVDistortion: 0
     - _ZWrite: 1
     m_Colors:
+    - _AmbientColor: {r: 0.5, g: 0.1, b: 0.2, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _DistortScrolling: {r: 0, g: 0, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 0}
     - _EmissionColorUI: {r: 1, g: 1, b: 1, a: 1}
+    - _FresnelColor: {r: 1, g: 1, b: 1, a: 1}
+    - _FrontColor: {r: 1, g: 1, b: 1, a: 0}
+    - _HColor: {r: 0.785, g: 0.785, b: 0.785, a: 1}
+    - _HighColor: {r: 1, g: 1, b: 1, a: 1}
+    - _LightDirF: {r: 0, g: 0, b: -1, a: 1}
+    - _LightDirR: {r: 1, g: 0, b: 0, a: 1}
+    - _LightDirT: {r: 0, g: 1, b: 0, a: 1}
+    - _LightTint: {r: 1, g: 1, b: 1, a: 0}
+    - _LightmapColor: {r: 0, g: 0, b: 0, a: 0}
+    - _LowColor: {r: 1, g: 1, b: 1, a: 1}
+    - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
+    - _OverlayTex_Scroll: {r: 0.1, g: 0.1, b: 1, a: 1}
+    - _RightColor: {r: 0.9, g: 0.9, b: 0.9, a: 0}
+    - _RimColor: {r: 1, g: 1, b: 1, a: 1}
+    - _SColor: {r: 0.195, g: 0.195, b: 0.195, a: 1}
+    - _ShadowColor: {r: 0, g: 0, b: 0, a: 1}
+    - _TopColor: {r: 0, g: 0.84309673, b: 1, a: 0}
   m_BuildTextureStacks: []

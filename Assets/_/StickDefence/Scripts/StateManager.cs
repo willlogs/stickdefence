@@ -1,5 +1,6 @@
 using DB.Utils;
 using DB.War.Stack;
+using DB.War.Stickman;
 using PT.Utils;
 using System;
 using System.Collections;
@@ -13,7 +14,7 @@ namespace DB.War
     {
         public GameObject go;
         public Upgradable upgradable;
-        public bool isUnlocked;
+        public bool isUnlocked, isTower;
     }
 
     [Serializable]
@@ -23,19 +24,25 @@ namespace DB.War
         public int supply;
         public bool isUnlocked;
 
+        public GameObject rewardPrefab;
+        public int rewardNumber;
+        public float scaleX = 1, scaleY = 1;
+
         public GameObject go;
         [SerializeField] public List<StagePart> children;
     }
 
     public class StateManager : MonoBehaviour
     {
+        public List<Upgradable> towers;
+        public event Action OnHaveTowers;
+
         // get one ammo box
         public void Upgrade()
         {
             if (stages[index].supply < stages[index].need)
             {
                 stages[index].supply++;
-                print(stages[index].supply + "/" + stages[index].need);
 
                 if (stages[index].supply >= stages[index].need)
                 {
@@ -55,11 +62,15 @@ namespace DB.War
         {
             int unlockedCount = 0;
             BaseStage stage = stages[index - 1];
+            StagePart newUnlock = new StagePart();
+            bool flag = false;
             foreach (StagePart sp in stage.children)
             {
                 if (sp.upgradable == u)
                 {
                     sp.isUnlocked = true;
+                    flag = true;
+                    newUnlock = sp;
                     unlockedCount++;
                     // call enemy wave if needed
                 }
@@ -70,6 +81,12 @@ namespace DB.War
                 }
             }
             u.OnFullyUpgradedE -= OneUpgraded;
+
+            if (flag && newUnlock.isTower)
+            {
+                towers.Add(newUnlock.upgradable);
+                OnHaveTowers?.Invoke();
+            }
 
             if(unlockedCount >= stage.children.Count)
             {
@@ -92,6 +109,11 @@ namespace DB.War
         [SerializeField] private float upgradeDelay = 0.1f;
         [SerializeField] private BoolCondition unstackCondition;
         [SerializeField] private GameObject unstackerGO;
+        [SerializeField] private WaveManager waveManager;
+
+        [SerializeField] private Transform[] spawnPoints, tankSpawnPoints, chopperSpawnPoints;
+        [SerializeField] private SquadManager squadManager;
+        [SerializeField] private CameraFollowerXZ cameraFollower;
 
         private bool hasNext = true, waiting = false;
 
@@ -99,6 +121,31 @@ namespace DB.War
         {
             stages[index].isUnlocked = true;
             stages[index].go.SetActive(true);
+            BaseStage stage = stages[index];
+            cameraFollower.ScaleOffset(stage.scaleX, stage.scaleY);
+            if (stage.rewardPrefab != null)
+            {
+                for(int i = 0; i < stage.rewardNumber; i++)
+                {
+                    GameObject go = Instantiate(stage.rewardPrefab);
+                    Stickman.Stickman person = go.GetComponent<Stickman.Stickman>();
+                    Vector3 pos;
+                    if (person.isTank)
+                    {
+                        pos = tankSpawnPoints[UnityEngine.Random.Range(0, tankSpawnPoints.Length)].position;
+                    }else if (person.isChopper)
+                    {
+                        pos = chopperSpawnPoints[UnityEngine.Random.Range(0, chopperSpawnPoints.Length)].position;
+                    }
+                    else
+                    {
+                        pos = spawnPoints[UnityEngine.Random.Range(0, spawnPoints.Length)].position;
+                    }
+                    go.transform.position = new Vector3(pos.x, go.transform.position.y, pos.z);
+                    squadManager.AddPerson(person);
+                }
+            }
+
             foreach (StagePart sp in stages[index].children)
             {
                 if (sp.isUnlocked)
@@ -109,7 +156,10 @@ namespace DB.War
             }
             index++;
             waiting = true;
+
             unstackerGO.SetActive(false);
+            unstackerGO.GetComponent<Unstacker>().ForceExit();
+
             CheckIndex();
         }
 

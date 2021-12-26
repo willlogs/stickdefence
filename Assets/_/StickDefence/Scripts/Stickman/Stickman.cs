@@ -11,6 +11,7 @@ namespace DB.War.Stickman
         public event Action OnGoalReached;
         public event Action<Stickman> OnKilledByGun;
 
+        public bool isTank, isChopper;
         public Transform mainGoalT;
 
         public void Die()

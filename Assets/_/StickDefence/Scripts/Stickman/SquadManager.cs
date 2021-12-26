@@ -7,10 +7,20 @@ namespace DB.War.Stickman
 {
     public class SquadManager : MonoBehaviour
     {
+        int wpindex = 0;
+
         [Button]
         public void AddPerson(Stickman person)
         {
             _crowd.Add(person);
+            if (person.isTank)
+            {
+                person.mainGoalT.parent = WPs[wpindex++];
+                person.mainGoalT.localPosition = Vector3.zero;
+                
+                return;
+            }
+
             PlaceCrowd();
         }
 
@@ -21,6 +31,8 @@ namespace DB.War.Stickman
         [SerializeField] private float _radiusIncrease = 0.3f;
         [FoldoutGroup("Placor")]
         [SerializeField] private int _density = 4;
+
+        [SerializeField] private Transform[] WPs;
 
         [Button]
         private void PlaceCrowd()

@@ -13,7 +13,7 @@ namespace DB.War.Stickman
         {
             location += (transform.position - location).normalized * stopDistance;
             path = new NavMeshPath();
-            NavMesh.CalculatePath(transform.position, location, NavMesh.AllAreas, path);
+            NavMesh.CalculatePath(transform.position, location, areaCode == 0 ? NavMesh.AllAreas : areaCode, path);
             if(path.corners.Length > 1)
             {
                 cornerIdx = 1;
@@ -48,7 +48,8 @@ namespace DB.War.Stickman
             while (hasTarget)
             {
                 yield return new WaitForSeconds(betweenPathFinds);
-                GoToLocation(target.position);
+                if(target != null)
+                    GoToLocation(target.position);
             }
         }
 

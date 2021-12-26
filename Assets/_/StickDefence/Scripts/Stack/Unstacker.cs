@@ -19,6 +19,11 @@ namespace DB.War.Stack
             hasStacker = stacker != null;
         }
 
+        public void ForceExit()
+        {
+            hasStacker = false;
+        }
+
         public void Exit(Collider other)
         {
             if (other.isTrigger)

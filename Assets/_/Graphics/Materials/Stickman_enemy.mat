@@ -90,8 +90,8 @@ Material:
     - _OutlineSize: 60.12
     - _Parallax: 0.02
     - _RampLevels: 3
-    - _RampSmooth: 0.1
-    - _RampThreshold: 0.5
+    - _RampSmooth: 0.528
+    - _RampThreshold: 1
     - _RimAlpha: 0
     - _RimDropOff: 0
     - _RimPower: 0
@@ -103,7 +103,7 @@ Material:
     - _ZSmooth: -0.5
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 1, g: 0, b: 0.46643734, a: 1}
+    - _Color: {r: 1, g: 0, b: 0.24885702, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _FresnelColor: {r: 1, g: 1, b: 1, a: 1}
     - _HColor: {r: 0.785, g: 0.785, b: 0.785, a: 1}
@@ -111,5 +111,5 @@ Material:
     - _LowColor: {r: 1, g: 1, b: 1, a: 1}
     - _OutlineColor: {r: 0, g: 0.101519525, b: 0.6698113, a: 1}
     - _RimColor: {r: 1, g: 1, b: 1, a: 1}
-    - _SColor: {r: 0.195, g: 0.195, b: 0.195, a: 1}
+    - _SColor: {r: 0.3962264, g: 0.3962264, b: 0.3962264, a: 1}
   m_BuildTextureStacks: []

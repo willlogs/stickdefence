@@ -38,6 +38,11 @@ namespace DB.War.Weapons
                 Vector3 dir = rb.velocity.normalized;
                 if (hasTarget)
                 {
+                    if(target == null)
+                    {
+                        hasTarget = false;
+                    }
+
                     dir = target.position - transform.position;
                     dir = dir.normalized;
                 }

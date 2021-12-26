@@ -61,6 +61,9 @@ namespace DB.War.Stack
         [Button]
         public void Damage(int damage)
         {
+            if (!destructible)
+                return;
+
             health.Amount -= damage;
             if(health.Amount <= 0)
             {
@@ -95,10 +98,15 @@ namespace DB.War.Stack
         {
             OnFullyUpgraded?.Invoke();
             OnFullyUpgradedE?.Invoke(this);
+
+            unstacker.GetComponent<Unstacker>().ForceExit();
             unstacker.SetActive(false);
 
-            whole.SetActive(true);
-            partsPar.SetActive(false);
+            if(partsPar != null)
+                partsPar.SetActive(false);
+
+            if(whole != null)
+                whole.SetActive(true);
         }
 
         [SerializeField] private Health health;
@@ -109,14 +117,27 @@ namespace DB.War.Stack
         [SerializeField] private int level = 0;
         [SerializeField] private float upgradeDelay = 0.1f;
         [SerializeField] private BoolCondition condition;
+        [SerializeField] private bool destructible = true;
 
         private void Awake()
         {
-            healthUI.SetHealth(health);
+            if(healthUI != null)
+                healthUI.SetHealth(health);
 
-            foreach(Transform child in partsPar.transform)
+            if (partsPar != null)
             {
-                parts.Add(child.gameObject);
+                GameObject[] defParts = parts.ToArray();
+                parts = new List<GameObject>();
+
+                foreach (Transform child in partsPar.transform)
+                {
+                    parts.Add(child.gameObject);
+                }
+
+                foreach (GameObject go in defParts)
+                {
+                    parts.Add(go);
+                }
             }
 
             for(int i = level; i < parts.Count; i++)

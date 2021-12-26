@@ -1668,7 +1668,7 @@ MonoBehaviour:
   betweenPathFinds: 1
   stopDistance: 0.1
   autoPathfindFromStart: 0
-  target: {fileID: 0}
+  target: {fileID: 1508640117}
   goalT: {fileID: 1734965464196150008}
   stickman: {fileID: 1734965463911473502}
   areaCode: 0
