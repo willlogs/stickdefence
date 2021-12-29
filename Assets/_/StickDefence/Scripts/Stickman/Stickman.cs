@@ -12,7 +12,7 @@ namespace DB.War.Stickman
         public event Action<Stickman> OnKilledByGun;
 
         public bool isTank, isChopper;
-        public Transform mainGoalT;
+        public Transform mainGoalT, goalT;
 
         public void Die()
         {
@@ -30,7 +30,7 @@ namespace DB.War.Stickman
         [SerializeField] private Component[] removeOnDeath;
 
         [SerializeField] private Animator animator;
-        [SerializeField] private Transform goalT, targetT; // move to goal and look at target
+        [SerializeField] private Transform targetT; // move to goal and look at target
         [SerializeField] private float runningSpeed, goalDistanceThreshold, lookRotationSpeed = 5, pathfindingInterval = 0.1f;
         [SerializeField] private Rigidbody rb;
         [SerializeField] private StickPathTraveler pathTraveler;

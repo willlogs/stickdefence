@@ -12,8 +12,8 @@ NavMeshProjectSettings:
   - name: Jump
     cost: 2
   - name: Tank
-    cost: 2
-  - name: 
+    cost: 1
+  - name: Human
     cost: 1
   - name: 
     cost: 1

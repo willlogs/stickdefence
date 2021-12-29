@@ -1623,14 +1623,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27f1388ea7ef1ce428eade6f40ff1105, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isTank: 0
+  isChopper: 0
   mainGoalT: {fileID: 1508640117}
+  goalT: {fileID: 1734965464196150008}
   deathMat: {fileID: 2100000, guid: d12870883af5a28488ee7217abe80384, type: 2}
   renderer_: {fileID: 1946376324034792510}
   removeOnDeath:
   - {fileID: 7812311834411095042}
   - {fileID: 3812781890678770250}
   animator: {fileID: 2919178959054042730}
-  goalT: {fileID: 1734965464196150008}
   targetT: {fileID: 90098552909422458}
   runningSpeed: 10
   goalDistanceThreshold: 0.5
@@ -1671,7 +1673,7 @@ MonoBehaviour:
   target: {fileID: 1508640117}
   goalT: {fileID: 1734965464196150008}
   stickman: {fileID: 1734965463911473502}
-  areaCode: 0
+  areaCode: 
 --- !u!1 &8170299955498800218
 GameObject:
   m_ObjectHideFlags: 0

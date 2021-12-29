@@ -22,9 +22,20 @@ namespace DB.War.Stack
                 parts[i].gameObject.SetActive(true);
             }
 
-            whole.SetActive(true);
-            whole.transform.parent = null;
-            Destroy(gameObject);
+            OnFullyUpgraded?.Invoke();
+            OnFullyUpgradedE?.Invoke(this);
+
+            unstacker.GetComponent<Unstacker>().ForceExit();
+            unstacker.SetActive(false);
+
+            if (partsPar != null)
+                partsPar.SetActive(false);
+
+            if (whole != null)
+            {
+                whole.SetActive(true);
+                whole.transform.parent = null;
+            }
         }
 
         public void Upgrade()

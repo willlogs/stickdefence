@@ -11,9 +11,11 @@ namespace DB.War.Stickman
         [Button]
         public void GoToLocation(Vector3 location)
         {
+            location.y = 0;
             location += (transform.position - location).normalized * stopDistance;
             path = new NavMeshPath();
-            NavMesh.CalculatePath(transform.position, location, areaCode == 0 ? NavMesh.AllAreas : areaCode, path);
+            int ac = 1 << areaCode;
+            NavMesh.CalculatePath(transform.position, location, areaCode > 0 ? ac : NavMesh.AllAreas, path);
             if(path.corners.Length > 1)
             {
                 cornerIdx = 1;
@@ -37,7 +39,7 @@ namespace DB.War.Stickman
 
         [SerializeField] private Transform goalT;
         [SerializeField] private Stickman stickman;
-        [SerializeField] private int areaCode = 0;
+        [SerializeField] private int areaCode;
 
         private bool isWaitingForNextCorner, hasTarget;
         private int cornerIdx = 0;
@@ -55,6 +57,8 @@ namespace DB.War.Stickman
 
         private void Awake()
         {
+            goalT.position = transform.position;
+
             stickman.OnGoalReached += OnGoalReached;
             if (autoPathfindFromStart)
             {

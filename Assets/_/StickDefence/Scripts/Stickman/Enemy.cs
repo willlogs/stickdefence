@@ -36,6 +36,12 @@ namespace DB.War.Stickman
 
         public void Die()
         {
+            for(int i = 0; i < rewardCount; i++)
+            {
+                GameObject go = Instantiate(ammoxPrefab);
+                go.transform.position = transform.position + new Vector3(Random.Range(-1f, 1f), 0, Random.Range(-1f, 1f));
+            }
+
             stickman.Die();
             gameObject.layer = 7;
         }
@@ -47,6 +53,8 @@ namespace DB.War.Stickman
         [SerializeField] private StickPathTraveler pathTraveler;
         [SerializeField] private Health health;
         [SerializeField] private HealthUI healthUI;
+        [SerializeField] private GameObject ammoxPrefab;
+        [SerializeField] private int rewardCount = 10;
 
         private Transform target;
         private bool hasTarget = false;

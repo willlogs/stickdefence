@@ -22,7 +22,7 @@ namespace DB.War
         [SerializeField] private StateManager stateManager;
         [SerializeField] private Transform[] spawnPoints;
 
-        private bool done;
+        public bool done;
 
         private void Awake()
         {

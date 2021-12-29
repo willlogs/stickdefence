@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1557517469295305575}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: TP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -201,7 +201,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5419163741649638020}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Goal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -235,7 +235,7 @@ GameObject:
   - component: {fileID: 5419163741824844648}
   - component: {fileID: 5419163741824844655}
   - component: {fileID: 5419163741824844654}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Tank
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -277,11 +277,11 @@ MonoBehaviour:
   isTank: 1
   isChopper: 0
   mainGoalT: {fileID: 5419163742457787524}
+  goalT: {fileID: 5419163741649638020}
   deathMat: {fileID: 0}
   renderer_: {fileID: 0}
   removeOnDeath: []
   animator: {fileID: 5419163741824844648}
-  goalT: {fileID: 5419163741649638020}
   targetT: {fileID: 5419163743032653383}
   runningSpeed: 5
   goalDistanceThreshold: 4
@@ -317,7 +317,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5419163741824844653}
   serializedVersion: 2
-  m_Mass: 100
+  m_Mass: 200
   m_Drag: 20
   m_AngularDrag: 0.05
   m_UseGravity: 1
@@ -338,7 +338,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   betweenPathFinds: 1
-  stopDistance: 0.1
+  stopDistance: 5
   autoPathfindFromStart: 1
   target: {fileID: 5419163742457787524}
   goalT: {fileID: 5419163741649638020}
@@ -353,7 +353,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5419163742457787524}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: mainGoal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -383,7 +383,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5419163743032653383}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Target
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -413,7 +413,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5374793581252653906}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: AimT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -446,7 +446,7 @@ GameObject:
   - component: {fileID: 6236396526827096965}
   - component: {fileID: 3797637591390352639}
   - component: {fileID: 1503925726024086113}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: AutoShooter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -555,9 +555,89 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5419163741824844650}
     m_Modifications:
+    - target: {fileID: 1015699140540020, guid: 1e1a95ff15bff5141833771dbdc8187a, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1040307943729476, guid: 1e1a95ff15bff5141833771dbdc8187a, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1171787244576004, guid: 1e1a95ff15bff5141833771dbdc8187a, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1243597434731032, guid: 1e1a95ff15bff5141833771dbdc8187a, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1250541540499386, guid: 1e1a95ff15bff5141833771dbdc8187a, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1303349117326788, guid: 1e1a95ff15bff5141833771dbdc8187a, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1337564781075482, guid: 1e1a95ff15bff5141833771dbdc8187a, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1408238270017812, guid: 1e1a95ff15bff5141833771dbdc8187a, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1439526724658122, guid: 1e1a95ff15bff5141833771dbdc8187a, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1459876338082302, guid: 1e1a95ff15bff5141833771dbdc8187a, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1480350613601056, guid: 1e1a95ff15bff5141833771dbdc8187a, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1532006824096694, guid: 1e1a95ff15bff5141833771dbdc8187a, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1588763549491916, guid: 1e1a95ff15bff5141833771dbdc8187a, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1631806056140364, guid: 1e1a95ff15bff5141833771dbdc8187a, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 1757943916142034, guid: 1e1a95ff15bff5141833771dbdc8187a, type: 3}
       propertyPath: m_Name
       value: SM_Veh_Russian_Tank_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 1757943916142034, guid: 1e1a95ff15bff5141833771dbdc8187a, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1801711893218544, guid: 1e1a95ff15bff5141833771dbdc8187a, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1860772027011284, guid: 1e1a95ff15bff5141833771dbdc8187a, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1892154034629696, guid: 1e1a95ff15bff5141833771dbdc8187a, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1990471263340770, guid: 1e1a95ff15bff5141833771dbdc8187a, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1996506000268226, guid: 1e1a95ff15bff5141833771dbdc8187a, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4223141239529196, guid: 1e1a95ff15bff5141833771dbdc8187a, type: 3}
       propertyPath: m_RootOrder
