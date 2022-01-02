@@ -54,9 +54,11 @@ namespace DB.Utils
             Vector3 clipped = new Vector3(
                 Mathf.Clamp(vp.x, 0.1f, 0.9f),
                 Mathf.Clamp(vp.y, 0.1f, 0.9f),
-                Mathf.Clamp(vp.z, 0.1f, 0.9f)
+                0
             );
 
+            vp.z = 0;
+            img.transform.right = -vp.normalized;
             bool isClipped = clipped.x != vp.x || clipped.y != vp.y;
             if (isClipped)
             {
