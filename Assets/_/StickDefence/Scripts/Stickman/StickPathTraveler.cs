@@ -27,6 +27,9 @@ namespace DB.War.Stickman
                 cornerIdx = 1;
                 isWaitingForNextCorner = true;
                 GoToNextCorner();
+            }else if(bypassObstacle)
+            {
+                goalT.position = location;
             }
         }
 
@@ -40,7 +43,7 @@ namespace DB.War.Stickman
         }
 
         [SerializeField] private float betweenPathFinds = 1f, stopDistance = 0.1f;
-        [SerializeField] private bool autoPathfindFromStart = false, shortCircuit;
+        [SerializeField] private bool autoPathfindFromStart = false, shortCircuit, bypassObstacle;
         [SerializeField] private Transform target;
 
         [SerializeField] private Transform goalT;

@@ -1670,10 +1670,12 @@ MonoBehaviour:
   betweenPathFinds: 1
   stopDistance: 0.1
   autoPathfindFromStart: 0
+  shortCircuit: 0
+  bypassObstacle: 0
   target: {fileID: 1508640117}
   goalT: {fileID: 1734965464196150008}
   stickman: {fileID: 1734965463911473502}
-  areaCode: 
+  areaCode: 0
 --- !u!1 &8170299955498800218
 GameObject:
   m_ObjectHideFlags: 0

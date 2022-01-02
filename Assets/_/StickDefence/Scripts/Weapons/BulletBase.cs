@@ -50,8 +50,9 @@ namespace DB.War.Weapons
                 }
 
                 rb.velocity = dir * speed;
-                transform.up = dir.normalized;
             }
+
+            transform.up = rb.velocity.normalized;
         }
 
         private void OnCollisionEnter(Collision collision)
