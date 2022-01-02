@@ -9,7 +9,7 @@ namespace DB.War.Stack
 {
     public class Stacker : MonoBehaviour
     {
-        public UnityEvent OnGatherBox;
+        public UnityEvent OnGatherBox, OnReach70;
 
         public void GatherBox(Collider box)
         {
@@ -101,6 +101,11 @@ namespace DB.War.Stack
             }
             score++;
             OnGatherBox?.Invoke();
+
+            if(score == 70)
+            {
+                OnReach70?.Invoke();
+            }
         }
 
         [SerializeField] private AmmoBox firstAmmoBox;

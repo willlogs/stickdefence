@@ -16,7 +16,9 @@ namespace DB.War.Stickman
 
         public void Die()
         {
-            animator.SetTrigger("Die");
+            isDead = true;
+            if (hasAnim)
+                animator.SetTrigger("Die");
             renderer_.material = deathMat;
             foreach(Component c in removeOnDeath)
             {
@@ -36,10 +38,11 @@ namespace DB.War.Stickman
         [SerializeField] private StickPathTraveler pathTraveler;
         [SerializeField] private BoolCondition lookForwardCondition;
 
-        private bool _isRunning = false, isDead = false;
+        private bool _isRunning = false, isDead = false, hasAnim;
 
         private void Awake()
         {
+            hasAnim = animator != null;
             rb = GetComponent<Rigidbody>();
             goalT.parent = null;
             mainGoalT.parent = null;
@@ -63,14 +66,17 @@ namespace DB.War.Stickman
             targetDiff.y = 0;
 
             float goalTargetDot = Vector3.Dot(goalDiff, targetDiff);
-            animator.SetFloat("WalkSpeed", Mathf.Sign(goalTargetDot));
+
+            if(hasAnim)
+                animator.SetFloat("WalkSpeed", Mathf.Sign(goalTargetDot));
 
             if (goalDiff.magnitude > goalDistanceThreshold)
             {
                 if (!_isRunning)
                 {
                     _isRunning = true;
-                    animator.SetBool("Run", true);
+                    if (hasAnim)
+                        animator.SetBool("Run", true);
                 }
                 rb.velocity = goalDiff.normalized * runningSpeed;
 
@@ -84,7 +90,8 @@ namespace DB.War.Stickman
                 if (_isRunning)
                 {
                     _isRunning = false;
-                    animator.SetBool("Run", false);
+                    if (hasAnim)
+                        animator.SetBool("Run", false);
                     OnGoalReached?.Invoke();
                 }
             }

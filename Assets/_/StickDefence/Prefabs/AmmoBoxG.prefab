@@ -126,4 +126,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   callOnStart: 1
-  lifeTime: 5
+  lifeTime: 10

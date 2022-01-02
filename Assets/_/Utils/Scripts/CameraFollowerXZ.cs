@@ -36,7 +36,8 @@ namespace PT.Utils
 
             if (_lookAtIt)
             {
-                transform.forward = _target.position - transform.position;
+                Vector3 frw = _target.position - transform.position;
+                transform.forward = Vector3.Lerp(transform.forward, frw, Time.deltaTime);
             }
         }
     }

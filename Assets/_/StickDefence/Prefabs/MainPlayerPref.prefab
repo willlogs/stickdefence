@@ -95,6 +95,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnReach70:
+    m_PersistentCalls:
+      m_Calls: []
   firstAmmoBox: {fileID: 223587620784232660}
   stack: []
   dummies: []
@@ -262,6 +265,7 @@ MonoBehaviour:
   aimT: {fileID: 1045131891}
   turretRotation: 1
   resetTurret: 0
+  shootLevel: 1
   hasTargetCondition: {fileID: 1668656330120067322}
   forwMultiplier: 1
 --- !u!135 &1745972299
@@ -275,7 +279,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 7.26
+  m_Radius: 12
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1745972300
 MonoBehaviour:

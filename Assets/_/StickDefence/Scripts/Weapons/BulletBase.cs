@@ -25,7 +25,9 @@ namespace DB.War.Weapons
         }
 
         [SerializeField] private Rigidbody rb;
-        [SerializeField] private float speed;
+        [SerializeField] private float speed, impactRange = 0;
+        [SerializeField] private LayerMask impactLayerMask;
+        [SerializeField] private bool drops = false;
 
         private Transform target;
         private bool hasTarget = false;
@@ -33,7 +35,7 @@ namespace DB.War.Weapons
 
         private void Update()
         {
-            if (gotShot)
+            if (gotShot && !drops)
             {
                 Vector3 dir = rb.velocity.normalized;
                 if (hasTarget)
@@ -55,6 +57,23 @@ namespace DB.War.Weapons
         private void OnCollisionEnter(Collision collision)
         {
             OnContact?.Invoke();
+
+            if(impactRange > 0)
+            {
+                Collider[] colliders = Physics.OverlapSphere(transform.position, impactRange, impactLayerMask);
+                foreach(Collider collider in colliders)
+                {
+                    if (collider.isTrigger)
+                        continue;
+
+                    Damager d = collider.GetComponent<Damager>();
+                    if(d != null)
+                    {
+                        d.Damage(damage);
+                    }
+                }
+            }
+
             Destroy(gameObject);
         }
     }

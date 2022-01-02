@@ -11,6 +11,12 @@ namespace DB.War.Stickman
         [Button]
         public void GoToLocation(Vector3 location)
         {
+            if (shortCircuit)
+            {
+                goalT.position = location;
+                return;
+            }
+
             location.y = 0;
             location += (transform.position - location).normalized * stopDistance;
             path = new NavMeshPath();
@@ -34,7 +40,7 @@ namespace DB.War.Stickman
         }
 
         [SerializeField] private float betweenPathFinds = 1f, stopDistance = 0.1f;
-        [SerializeField] private bool autoPathfindFromStart = false;
+        [SerializeField] private bool autoPathfindFromStart = false, shortCircuit;
         [SerializeField] private Transform target;
 
         [SerializeField] private Transform goalT;

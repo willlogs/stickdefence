@@ -9,6 +9,7 @@ namespace DB.War
 {
     public class Building : MonoBehaviour
     {
+        public Action<Building> OnDestroy;
         public bool active;
 
         public bool GoToNextStage()
@@ -32,7 +33,7 @@ namespace DB.War
             active = false;
             foreach (BuildingStage bs in stageGOs)
             {
-                if (!bs.isActive)
+                if (!bs.isActive || bs.isDead)
                 {
                     bs.Deactivate();
                     bs.gameObject.SetActive(false);
@@ -60,11 +61,9 @@ namespace DB.War
         {
             active = false;
             curStage.OnDestroyed -= OnCurrentDied;
+            curStage.gameObject.SetActive(false);
 
-            curStage.transform.DOScale(0, 1).OnComplete(() =>
-            {
-                curStage.gameObject.SetActive(false);
-            });
+            OnDestroy?.Invoke(this);
         }
 
         private IEnumerator Tick()

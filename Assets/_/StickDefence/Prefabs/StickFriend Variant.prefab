@@ -81,6 +81,7 @@ MonoBehaviour:
   aimT: {fileID: 1037197923703552430}
   turretRotation: 1
   resetTurret: 0
+  shootLevel: 1
   hasTargetCondition: {fileID: 175115019264264358}
   forwMultiplier: 1
 --- !u!135 &7477989139670870089

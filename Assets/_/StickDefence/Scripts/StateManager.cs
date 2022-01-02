@@ -6,6 +6,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace DB.War
 {
@@ -63,6 +64,7 @@ namespace DB.War
     {
         public List<Upgradable> towers;
         public event Action OnHaveTowers;
+        public UnityEvent OnStageUnlock;
 
         public void Save()
         {
@@ -292,6 +294,7 @@ namespace DB.War
             unstackerGO.SetActive(false);
 
             CheckIndex();
+            OnStageUnlock?.Invoke();
         }
 
         private void CheckIndex()

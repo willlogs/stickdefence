@@ -41,11 +41,18 @@ namespace DB.War
             }
         }
 
+        public void FullyDestroy()
+        {
+            OnDestroyed?.Invoke(this);
+        }
+
         public void Die()
         {
-            isDead = true;
-            OnDestroy?.Invoke();
-            OnDestroyed?.Invoke(this);
+            if (!isDead)
+            {
+                isDead = true;
+                OnDestroy?.Invoke();
+            }
         }
 
         public void Damage(int damage)

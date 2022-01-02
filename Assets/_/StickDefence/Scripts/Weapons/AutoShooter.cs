@@ -59,7 +59,7 @@ namespace DB.War.Weapons
         [SerializeField] private List<Transform> targets;
         [SerializeField] private GunBase gun;
         [SerializeField] private Transform turret, aimT;
-        [SerializeField] private bool turretRotation, resetTurret;
+        [SerializeField] private bool turretRotation, resetTurret, shootLevel;
         [SerializeField] private BoolCondition hasTargetCondition;
         [SerializeField] private int forwMultiplier = 1;
 
@@ -83,8 +83,8 @@ namespace DB.War.Weapons
                     turret.forward = forw;
                 }
 
-                aimT.position = t.position;
-                gun.Shoot(t);
+                aimT.position = new Vector3(t.position.x, shootLevel? aimT.position.y : t.position.y, t.position.z);
+                gun.Shoot();
             }
             else
             {

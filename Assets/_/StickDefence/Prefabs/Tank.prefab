@@ -478,7 +478,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 21.65
+  m_Radius: 30
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &3797637591390352639
 MonoBehaviour:
@@ -498,6 +498,7 @@ MonoBehaviour:
   aimT: {fileID: 5374793581252653906}
   turretRotation: 1
   resetTurret: 1
+  shootLevel: 1
   hasTargetCondition: {fileID: 759826382729215921}
   forwMultiplier: 1
 --- !u!114 &1503925726024086113
