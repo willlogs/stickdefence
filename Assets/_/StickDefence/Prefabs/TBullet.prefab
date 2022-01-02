@@ -575,9 +575,14 @@ MonoBehaviour:
   OnContact:
     m_PersistentCalls:
       m_Calls: []
-  damage: 5
+  damage: 20
   rb: {fileID: 4681651744326825183}
   speed: 20
+  impactRange: 0
+  impactLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
+  drops: 0
 --- !u!54 &4681651744326825183
 Rigidbody:
   m_ObjectHideFlags: 0

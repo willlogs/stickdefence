@@ -184,6 +184,8 @@ namespace DB.War
                         unstackCondition.value = true;
                     });
                 }
+
+                txt.text = stages[index].supply + "/" + stages[index].need;
             }
         }
 
@@ -229,6 +231,8 @@ namespace DB.War
             if (hasNext)
             {
                 unstackerGO.SetActive(true);
+                txt.transform.parent.gameObject.SetActive(true);
+                txt.text = stages[index].supply + "/" + stages[index].need;
                 unstackCondition.value = true;
             }
         }
@@ -239,6 +243,7 @@ namespace DB.War
         [SerializeField] private BoolCondition unstackCondition;
         [SerializeField] private GameObject unstackerGO;
         [SerializeField] private WaveManager waveManager;
+        [SerializeField] private TMPro.TextMeshPro txt;
 
         [SerializeField] private Transform[] spawnPoints, tankSpawnPoints, chopperSpawnPoints;
         [SerializeField] private SquadManager squadManager;
@@ -292,6 +297,7 @@ namespace DB.War
 
             unstackerGO.GetComponent<Unstacker>().ForceExit();
             unstackerGO.SetActive(false);
+            txt.transform.parent.gameObject.SetActive(false);
 
             CheckIndex();
             OnStageUnlock?.Invoke();

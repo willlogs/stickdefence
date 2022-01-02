@@ -9,7 +9,7 @@ namespace DB.War.Stack
 {
     public class Stacker : MonoBehaviour
     {
-        public UnityEvent OnGatherBox, OnReach70;
+        public UnityEvent OnGatherBox, OnReduceBox, OnReach70;
 
         public void GatherBox(Collider box)
         {
@@ -32,12 +32,14 @@ namespace DB.War.Stack
             {
                 firstAmmoBox.gameObject.SetActive(false);
                 score--;
+                OnReduceBox?.Invoke();
                 return true;
             }
             else
             {
                 stack[score - 2].gameObject.SetActive(false);
                 score--;
+                OnReduceBox?.Invoke();
                 return true;
             }
         }
@@ -111,7 +113,7 @@ namespace DB.War.Stack
         [SerializeField] private AmmoBox firstAmmoBox;
         [SerializeField] private List<AmmoBox> stack;
         [SerializeField] private List<GameObject> dummies;
-        [SerializeField] private int score = 0;
+        [SerializeField] public int score = 0;
         [SerializeField] private int warmup = 50, dummyWarmup = 50;
         [SerializeField] private GameObject ammoBoxPrefab, dummyBoxPrefab;
 

@@ -510,7 +510,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   layerMask:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 131328
   OnEnter:
     m_PersistentCalls:
       m_Calls:

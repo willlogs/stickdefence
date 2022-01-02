@@ -11,7 +11,7 @@ namespace PT.Utils
         public void ScaleOffset(float scaleX, float scaleY)
         {
             _offset.y *= scaleY;
-            _offset.x *= scaleX;
+            _offset.z *= scaleX;
         }
 
         [SerializeField] private Transform _target;
