@@ -31,6 +31,9 @@ namespace DB.War.Stickman
 
         private void Update()
         {
+            if (Missile.canControl)
+                return;
+
             if (isDragging)
             {
                 goalT.position = transform.position + new Vector3(joystick._diff.x, 0, joystick._diff.y) * Time.deltaTime;

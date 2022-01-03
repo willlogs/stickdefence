@@ -361,7 +361,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1734965463911473502, guid: e7f1589c9ba189544a327473451e021b, type: 3}
       propertyPath: runningSpeed
-      value: 8
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 1734965463911473502, guid: e7f1589c9ba189544a327473451e021b, type: 3}
       propertyPath: lookForwardCondition

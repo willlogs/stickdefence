@@ -764,6 +764,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 1734965463911473502, guid: e7f1589c9ba189544a327473451e021b, type: 3}
+      propertyPath: runningSpeed
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1734965463911473502, guid: e7f1589c9ba189544a327473451e021b, type: 3}
       propertyPath: lookForwardCondition
       value: 
       objectReference: {fileID: 1668656330120067322}

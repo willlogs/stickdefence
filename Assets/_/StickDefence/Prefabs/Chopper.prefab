@@ -672,7 +672,7 @@ MonoBehaviour:
   removeOnDeath: []
   animator: {fileID: 0}
   targetT: {fileID: 8781085005148214984}
-  runningSpeed: 10
+  runningSpeed: 12
   goalDistanceThreshold: 4
   lookRotationSpeed: 5
   pathfindingInterval: 1
@@ -711,6 +711,7 @@ MonoBehaviour:
   stopDistance: 5
   autoPathfindFromStart: 1
   shortCircuit: 1
+  bypassObstacle: 0
   target: {fileID: 8781085005672748043}
   goalT: {fileID: 8781085005943763467}
   stickman: {fileID: 8781085006087381990}

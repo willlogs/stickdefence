@@ -1634,7 +1634,7 @@ MonoBehaviour:
   - {fileID: 3812781890678770250}
   animator: {fileID: 2919178959054042730}
   targetT: {fileID: 90098552909422458}
-  runningSpeed: 10
+  runningSpeed: 12
   goalDistanceThreshold: 0.5
   lookRotationSpeed: 5
   pathfindingInterval: 0.1

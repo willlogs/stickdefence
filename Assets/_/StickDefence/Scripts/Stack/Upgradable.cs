@@ -69,10 +69,11 @@ namespace DB.War.Stack
             }
         }
 
+        bool isdead = false;
         [Button]
         public void Damage(int damage)
         {
-            if (!destructible)
+            if (!destructible || isdead)
                 return;
 
             health.Amount -= damage;
@@ -85,6 +86,10 @@ namespace DB.War.Stack
 
         public void Explode()
         {
+            if (isdead)
+                return;
+
+            isdead = true;
             whole.SetActive(false);
             partsPar.SetActive(true);
             partsPar.transform.parent = null;
