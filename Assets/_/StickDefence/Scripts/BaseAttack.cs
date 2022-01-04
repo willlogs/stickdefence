@@ -11,7 +11,7 @@ public class BaseAttack : MonoBehaviour
         StickController stick = other.gameObject.GetComponent<StickController>();
         if (stick != null)
         {
-            if (i++ == 0)
+            if (i++ < 4)
                 return;
 
             Attack(other.transform);

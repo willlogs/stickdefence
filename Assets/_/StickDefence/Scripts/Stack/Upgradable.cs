@@ -115,8 +115,12 @@ namespace DB.War.Stack
             OnFullyUpgraded?.Invoke();
             OnFullyUpgradedE?.Invoke(this);
 
-            unstacker.GetComponent<Unstacker>().ForceExit();
-            unstacker.SetActive(false);
+            try
+            {
+                unstacker.GetComponent<Unstacker>().ForceExit();
+                unstacker.SetActive(false);
+            }
+            catch { }
 
             if(partsPar != null)
                 partsPar.SetActive(false);

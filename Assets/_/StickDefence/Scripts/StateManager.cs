@@ -29,6 +29,8 @@ namespace DB.War
         public int rewardNumber;
         public float scaleX = 1, scaleY = 1;
 
+        public Upgradable sideUpgradable;
+
         public GameObject go;
         [SerializeField] public List<StagePart> children;
     }
@@ -173,9 +175,18 @@ namespace DB.War
             {
                 stages[index].supply++;
 
+                if(stages[index].sideUpgradable != null)
+                {
+                    stages[index].sideUpgradable.Upgrade();
+                }
+
                 if (stages[index].supply >= stages[index].need)
                 {
                     UnlockStage();
+                    if (stages[index].sideUpgradable != null)
+                    {
+                        stages[index].sideUpgradable.Unlock();
+                    }
                 }
                 else
                 {
@@ -371,6 +382,11 @@ namespace DB.War
                 if (stages[i].isUnlocked)
                 {
                     UnlockStage();
+
+                    if (stages[i].sideUpgradable != null)
+                    {
+                        stages[i].sideUpgradable.Unlock();
+                    }
 
                     foreach (StagePart sp in stages[i].children)
                     {

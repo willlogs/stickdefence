@@ -89,7 +89,7 @@ namespace DB.War.Weapons
                     turret.forward = forw;
                 }
 
-                aimT.position = new Vector3(t.position.x, shootLevel? aimT.position.y : t.position.y, t.position.z);
+                aimT.position = new Vector3(t.position.x, shootLevel? gun.transform.position.y : t.position.y, t.position.z);
                 gun.Shoot();
             }
             else
