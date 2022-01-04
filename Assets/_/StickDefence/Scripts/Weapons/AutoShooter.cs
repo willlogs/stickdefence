@@ -75,6 +75,12 @@ namespace DB.War.Weapons
             if (targets.Count > 0)
             {
                 Transform t = targets[targets.Count - 1];
+                if(t == null)
+                {
+                    targets.RemoveAt(targets.Count - 1);
+                    return;
+                }
+
                 hasTargetCondition.value = true;
                 if (turretRotation)
                 {

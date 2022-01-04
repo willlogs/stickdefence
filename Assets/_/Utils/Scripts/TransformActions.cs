@@ -6,6 +6,11 @@ namespace DB.Utils
 {
     public class TransformActions : MonoBehaviour
     {
+        public void SetLayer(int l)
+        {
+            gameObject.layer = l;
+        }
+
         public void SetParentToNull()
         {
             transform.parent = null;

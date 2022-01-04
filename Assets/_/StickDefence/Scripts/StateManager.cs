@@ -308,7 +308,7 @@ namespace DB.War
             hasNext = index < stages.Length;
         }
 
-        int buildingCap = 2, curActive = 0;
+        int buildingCap = 4, curActive = 0;
         private IEnumerator Tick()
         {
             while (true)

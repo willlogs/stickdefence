@@ -5,11 +5,15 @@ using UnityEngine;
 
 public class BaseAttack : MonoBehaviour
 {
+    int i = 0;
     public void Enter(Collider other)
     {
         StickController stick = other.gameObject.GetComponent<StickController>();
         if (stick != null)
         {
+            if (i++ == 0)
+                return;
+
             Attack(other.transform);
         }
     }

@@ -33,10 +33,9 @@ public class HelperUI : MonoBehaviour
     }
 
     [SerializeField] private GameObject touchUIObj;
-    [SerializeField] private Transform canvasT, playerT, baseT, towerT;
-    [SerializeField] private Building bT; 
-    [SerializeField] private GameObject indicatorPrefab;
-    [SerializeField] private LineRenderer lineRenderer;
+    [SerializeField] private Transform canvasT, playerT, baseT, towerT, bT;
+    [SerializeField] private GameObject indicatorPrefab, dashLinePrefab, t0, t1, t2;
+    [SerializeField] private List<GameObject> dots;
 
     /// <summary>
     /// 0 - find enemy base and go there
@@ -57,8 +56,8 @@ public class HelperUI : MonoBehaviour
     GameObject indicator;
     private void Stage0()
     {
+        t0.SetActive(true);
         StartCoroutine(TickStage0());
-        bT.OnDestroy += BuildingDied;
 
         GameObject go = Instantiate(indicatorPrefab);
         go.transform.parent = canvasT;
@@ -82,13 +81,7 @@ public class HelperUI : MonoBehaviour
 
             if(NavMesh.CalculatePath(sp, tp, NavMesh.AllAreas, path))
             {
-                lineRenderer.positionCount = path.corners.Length;
-
-                for(int i = 0; i < path.corners.Length; i++)
-                {
-                    path.corners[i].y += 0.2f;
-                    lineRenderer.SetPosition(i, path.corners[i]);
-                }
+                ShowPath(path.corners);
             }
             else
             {
@@ -101,6 +94,8 @@ public class HelperUI : MonoBehaviour
 
     private void Stage1()
     {
+        t0.SetActive(false);
+        t1.SetActive(true);
         indicator.SetActive(false);
         StartCoroutine(TickStage1());
 
@@ -121,18 +116,11 @@ public class HelperUI : MonoBehaviour
             sp.y = 0;
             Vector3 tp = baseT.transform.position;
             tp.y = 0;
-            tp = tp + (sp - tp).normalized * 10;
             tp.y = 0;
 
             if (NavMesh.CalculatePath(sp, tp, NavMesh.AllAreas, path))
             {
-                lineRenderer.positionCount = path.corners.Length;
-
-                for (int i = 0; i < path.corners.Length; i++)
-                {
-                    path.corners[i].y += 0.2f;
-                    lineRenderer.SetPosition(i, path.corners[i]);
-                }
+                ShowPath(path.corners);
             }
             else
             {
@@ -144,12 +132,14 @@ public class HelperUI : MonoBehaviour
 
         if (tutorialIndex > 1)
         {
-            lineRenderer.enabled = false;
+
         }
     }
 
     private void Stage2()
     {
+        t1.SetActive(false);
+        t2.SetActive(true);
         indicator.SetActive(false);
         StartCoroutine(TickStage2());
 
@@ -175,13 +165,7 @@ public class HelperUI : MonoBehaviour
 
             if (NavMesh.CalculatePath(sp, tp, NavMesh.AllAreas, path))
             {
-                lineRenderer.positionCount = path.corners.Length;
-
-                for (int i = 0; i < path.corners.Length; i++)
-                {
-                    path.corners[i].y += 0.2f;
-                    lineRenderer.SetPosition(i, path.corners[i]);
-                }
+                ShowPath(path.corners);
             }
             else
             {
@@ -193,7 +177,42 @@ public class HelperUI : MonoBehaviour
 
         if (tutorialIndex > 2)
         {
-            lineRenderer.enabled = false;
+            t2.SetActive(false);
+            foreach(GameObject d in dots)
+            {
+                d.SetActive(false);
+            }
+        }
+    }
+
+    [SerializeField] private float betweenDots = 0.5f;
+    private void ShowPath(Vector3[] corners)
+    {
+        int di = 0;
+        float distance = 0;
+        for(int i = 0; i < corners.Length - 1 && di < dots.Count; i++)
+        {
+            float mag = (corners[i + 1] - corners[i]).magnitude;
+            while (true)
+            {
+                GameObject dot = dots[di++];
+                dot.SetActive(true);
+                Vector3 pos = Vector3.MoveTowards(corners[i], corners[i + 1], distance);
+                dot.transform.position = pos;
+                distance += betweenDots;
+
+                // break
+                if (distance >= mag)
+                {
+                    distance = 0;
+                    break;
+                }
+            }
+        }
+
+        for(int i = di; i < dots.Count; i++)
+        {
+            dots[i].SetActive(false);
         }
     }
 
@@ -229,6 +248,19 @@ public class HelperUI : MonoBehaviour
 
     private void Start()
     {
+        t0.SetActive(false);
+        t1.SetActive(false);
+        t2.SetActive(false);
+
+        GameObject dgo = new GameObject();
+        for(int i = 0; i < 100; i++)
+        {
+            GameObject go = Instantiate(dashLinePrefab);
+            go.SetActive(false);
+            go.transform.parent = dgo.transform;
+            dots.Add(go);
+        }
+
         if(PlayerPrefs.GetInt("done_tut") == 0)
             Stage0();
     }
