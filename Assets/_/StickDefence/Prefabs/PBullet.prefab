@@ -612,7 +612,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  damage: 50
+  damage: 30
   rb: {fileID: 4681651744326825183}
   speed: 20
   impactRange: 0

@@ -440,6 +440,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d88d3b0ff8c9564faa4bcb89dc5cf6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls: []
   stickman: {fileID: 88944801693244621}
   pathTraveler: {fileID: 3297078972973316057}
   health:
@@ -447,7 +450,7 @@ MonoBehaviour:
     amount: 100
   healthUI: {fileID: 1646833919}
   ammoxPrefab: {fileID: 8907616527556755917, guid: 037ede03f600be9469687316ccd6a1b6, type: 3}
-  rewardCount: 10
+  rewardCount: 3
 --- !u!114 &3293498919180176830
 MonoBehaviour:
   m_ObjectHideFlags: 0

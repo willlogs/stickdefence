@@ -25,8 +25,12 @@ namespace DB.War.Stack
             OnFullyUpgraded?.Invoke();
             OnFullyUpgradedE?.Invoke(this);
 
-            unstacker.GetComponent<Unstacker>().ForceExit();
-            unstacker.SetActive(false);
+            try
+            {
+                unstacker.GetComponent<Unstacker>().ForceExit();
+                unstacker.SetActive(false);
+            }
+            catch { }
 
             if (partsPar != null)
                 partsPar.SetActive(false);
@@ -40,32 +44,35 @@ namespace DB.War.Stack
 
         public void Upgrade()
         {
-            if (level < parts.Count)
+            for (int i = 0; i < stride; i++)
             {
-                GameObject part = parts[level++];
-                part.SetActive(true);
-
-                Quaternion rot = part.transform.rotation;
-                Vector3 pos = part.transform.position;
-
-                part.transform.position = new Vector3(UnityEngine.Random.Range(-1f, 1f), 1, UnityEngine.Random.Range(0, 1f)).normalized * 20 + pos;
-                Vector3 eulers = new Vector3(UnityEngine.Random.Range(-90f, 90f), UnityEngine.Random.Range(-90f, 90f), UnityEngine.Random.Range(-90f, 90f));
-                part.transform.rotation = Quaternion.Euler(eulers);
-
-                part.transform.DOMove(pos, 0.5f);
-                part.transform.DORotateQuaternion(rot, 0.5f);
-
-                if (level >= parts.Count)
+                if (level < parts.Count)
                 {
-                    Finish();
-                }
-                else
-                {
-                    TimeManager.Instance.DoWithDelay(upgradeDelay, () =>
+                    GameObject part = parts[level++];
+                    part.SetActive(true);
+
+                    Quaternion rot = part.transform.rotation;
+                    Vector3 pos = part.transform.position;
+
+                    part.transform.position = new Vector3(UnityEngine.Random.Range(-1f, 1f), 1, UnityEngine.Random.Range(0, 1f)).normalized * 20 + pos;
+                    Vector3 eulers = new Vector3(UnityEngine.Random.Range(-90f, 90f), UnityEngine.Random.Range(-90f, 90f), UnityEngine.Random.Range(-90f, 90f));
+                    part.transform.rotation = Quaternion.Euler(eulers);
+
+                    part.transform.DOMove(pos, 0.5f);
+                    part.transform.DORotateQuaternion(rot, 0.5f);
+
+                    if (level >= parts.Count)
                     {
-                        condition.value = true;
-                    });
-                }                
+                        Finish();
+                    }
+                    else
+                    {
+                        TimeManager.Instance.DoWithDelay(upgradeDelay, () =>
+                        {
+                            condition.value = true;
+                        });
+                    }
+                }
             }
         }
 
@@ -134,7 +141,7 @@ namespace DB.War.Stack
 
         [SerializeField] List<GameObject> parts;
         [SerializeField] private GameObject whole, partsPar, unstacker;
-        [SerializeField] private int level = 0;
+        [SerializeField] private int level = 0, stride = 3;
         [SerializeField] private float upgradeDelay = 0.1f;
         [SerializeField] private BoolCondition condition;
         [SerializeField] private bool destructible = true;

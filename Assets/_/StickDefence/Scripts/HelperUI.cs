@@ -8,11 +8,23 @@ using DB.War;
 
 public class HelperUI : MonoBehaviour
 {
-    public void OnReach70Ammox()
+    public void OnAmmoxGathered()
     {
         if(tutorialIndex == 0)
         {
+            t01.SetActive(false);
             GotoNextStage();
+        }
+    }
+
+    public int enemiesCount = 0;
+    public void OnEnemyDied()
+    {
+        enemiesCount--;
+        if(enemiesCount <= 0)
+        {
+            t0.SetActive(false);
+            t01.SetActive(true);
         }
     }
 
@@ -26,15 +38,31 @@ public class HelperUI : MonoBehaviour
 
     public void OnUpgradeTower()
     {
-        if(tutorialIndex == 2)
+        t4.SetActive(false);
+        indicator.SetActive(false);
+        PlayerPrefs.SetInt("done_tut", 1);
+        tutorialIndex = 5;
+    }
+
+    public void Goto3()
+    {
+        if (tutorialIndex == 2)
+        {
+            GotoNextStage();
+        }
+    }
+
+    public void Goto4()
+    {
+        if(tutorialIndex == 3)
         {
             GotoNextStage();
         }
     }
 
     [SerializeField] private GameObject touchUIObj;
-    [SerializeField] private Transform canvasT, playerT, baseT, towerT, bT;
-    [SerializeField] private GameObject indicatorPrefab, dashLinePrefab, t0, t1, t2;
+    [SerializeField] private Transform canvasT, playerT, baseT, towerT, bT, enemyBaseT;
+    [SerializeField] private GameObject indicatorPrefab, dashLinePrefab, t0, t01, t1, t2, t3, t4;
     [SerializeField] private List<GameObject> dots;
 
     /// <summary>
@@ -94,9 +122,14 @@ public class HelperUI : MonoBehaviour
 
     private void Stage1()
     {
-        t0.SetActive(false);
-        t1.SetActive(true);
-        indicator.SetActive(false);
+        try
+        {
+            t0.SetActive(false);
+            t1.SetActive(true);
+            indicator.SetActive(false);
+        }
+        catch { }
+
         StartCoroutine(TickStage1());
 
         GameObject go = Instantiate(indicatorPrefab);
@@ -185,6 +218,104 @@ public class HelperUI : MonoBehaviour
         }
     }
 
+    private void Stage3()
+    {
+        t2.SetActive(false);
+        t3.SetActive(true);
+        indicator.SetActive(false);
+        StartCoroutine(TickStage3());
+
+        GameObject go = Instantiate(indicatorPrefab);
+        go.transform.parent = canvasT;
+        Indicator ind = go.GetComponent<Indicator>();
+        ind.SetTarget(enemyBaseT);
+        ind.Activate();
+        indicator = go;
+    }
+
+    private IEnumerator TickStage3()
+    {
+        while (tutorialIndex == 3)
+        {
+            NavMeshPath path = new NavMeshPath();
+            Vector3 sp = playerT.position;
+            sp.y = 0;
+            Vector3 tp = enemyBaseT.transform.position;
+            tp.y = 0;
+            tp = tp + (sp - tp).normalized * 10;
+            tp.y = 0;
+
+            if (NavMesh.CalculatePath(sp, tp, NavMesh.AllAreas, path))
+            {
+                ShowPath(path.corners);
+            }
+            else
+            {
+                print("pathfind err");
+            }
+
+            yield return new WaitForEndOfFrame();
+        }
+
+        if (tutorialIndex > 3)
+        {
+            t2.SetActive(false);
+            foreach (GameObject d in dots)
+            {
+                d.SetActive(false);
+            }
+        }
+    }
+
+    private void Stage4()
+    {
+        t3.SetActive(false);
+        t4.SetActive(true);
+        indicator.SetActive(false);
+        StartCoroutine(TickStage4());
+
+        GameObject go = Instantiate(indicatorPrefab);
+        go.transform.parent = canvasT;
+        Indicator ind = go.GetComponent<Indicator>();
+        ind.SetTarget(towerT);
+        ind.Activate();
+        indicator = go;
+    }
+
+    private IEnumerator TickStage4()
+    {
+        while (tutorialIndex == 4)
+        {
+            NavMeshPath path = new NavMeshPath();
+            Vector3 sp = playerT.position;
+            sp.y = 0;
+            Vector3 tp = towerT.transform.position;
+            tp.y = 0;
+            tp = tp + (sp - tp).normalized * 10;
+            tp.y = 0;
+
+            if (NavMesh.CalculatePath(sp, tp, NavMesh.AllAreas, path))
+            {
+                ShowPath(path.corners);
+            }
+            else
+            {
+                print("pathfind err");
+            }
+
+            yield return new WaitForEndOfFrame();
+        }
+
+        if (tutorialIndex > 4)
+        {
+            t2.SetActive(false);
+            foreach (GameObject d in dots)
+            {
+                d.SetActive(false);
+            }
+        }
+    }
+
     [SerializeField] private float betweenDots = 0.5f;
     private void ShowPath(Vector3[] corners)
     {
@@ -232,6 +363,12 @@ public class HelperUI : MonoBehaviour
                 Stage2();
                 break;
             case 3:
+                Stage3();
+                break;
+            case 4:
+                Stage4();
+                break;
+            case 5:
                 indicator.SetActive(false);
                 PlayerPrefs.SetInt("done_tut", 1);
                 break;

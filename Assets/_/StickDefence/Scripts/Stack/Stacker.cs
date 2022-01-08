@@ -9,7 +9,8 @@ namespace DB.War.Stack
 {
     public class Stacker : MonoBehaviour
     {
-        public UnityEvent OnGatherBox, OnReduceBox, OnReach70;
+        public int targetEvent = 10;
+        public UnityEvent OnGatherBox, OnReduceBox, OnReachTarget, OnReachZero;
 
         public void GatherBox(Collider box)
         {
@@ -25,6 +26,7 @@ namespace DB.War.Stack
             if(score <= 0)
             {
                 score = 0;
+                OnReachZero?.Invoke();
                 return false;
             }
 
@@ -70,7 +72,7 @@ namespace DB.War.Stack
         }
 
         [Button]
-        public void AddAmmoBox()
+        public void AddAmmoBox(bool init = false)
         {
             if(score == 0)
             {
@@ -104,9 +106,9 @@ namespace DB.War.Stack
             score++;
             OnGatherBox?.Invoke();
 
-            if(score == 70)
+            if(score == targetEvent && !init)
             {
-                OnReach70?.Invoke();
+                OnReachTarget?.Invoke();
             }
         }
 
@@ -124,7 +126,7 @@ namespace DB.War.Stack
             dummyParent = new GameObject().transform;
             for(int i = 0; i < warmup; i++)
             {
-                AddAmmoBox();
+                AddAmmoBox(true);
             }
 
             for(int i = 0; i < dummyWarmup; i++)

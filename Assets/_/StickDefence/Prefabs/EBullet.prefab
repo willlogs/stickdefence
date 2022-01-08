@@ -614,7 +614,7 @@ MonoBehaviour:
         m_CallState: 2
   damage: 10
   rb: {fileID: 4681651744326825183}
-  speed: 20
+  speed: 7
   impactRange: 0
   impactLayerMask:
     serializedVersion: 2

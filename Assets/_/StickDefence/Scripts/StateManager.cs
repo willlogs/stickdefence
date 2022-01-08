@@ -373,7 +373,8 @@ namespace DB.War
         {
             // load the saves as JSON
             // TODO
-            Load();
+            if(PlayerPrefs.GetInt("done_tut") > 0)
+                Load();
 
             // apply the save
             for (int i = 0; i < stages.Length; i++)

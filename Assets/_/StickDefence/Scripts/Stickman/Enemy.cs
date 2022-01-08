@@ -3,11 +3,14 @@ using DB.War.Weapons;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace DB.War.Stickman
 {
     public class Enemy : MonoBehaviour
     {
+        public UnityEvent OnDeath;
+
         public void Enter(Collider c)
         {
             if (c.isTrigger)
@@ -36,7 +39,8 @@ namespace DB.War.Stickman
 
         public void Die()
         {
-            for(int i = 0; i < rewardCount; i++)
+            OnDeath?.Invoke();
+            for (int i = 0; i < rewardCount; i++)
             {
                 GameObject go = Instantiate(ammoxPrefab);
                 go.transform.position = transform.position + new Vector3(Random.Range(-1f, 1f), 0, Random.Range(-1f, 1f));

@@ -25,10 +25,19 @@ public class PowerUps : MonoBehaviour
         ui.fillAmount = amount;
         uiBtn.interactable = canRainBomb;
         shine.enabled = canRainBomb;
+
+        if (canRainBomb)
+        {
+            missile.color = Color.white;
+        }
+        else
+        {
+            missile.color = new Color(1f, 1f, 1f, 0.5f);
+        }
     }
 
     [SerializeField] private Stacker stacker;
-    [SerializeField] private Image ui, shine;
+    [SerializeField] private Image ui, shine, missile;
     [SerializeField] private Button uiBtn;
     [SerializeField] private GameObject bombPrefab;
 
