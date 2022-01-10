@@ -28,13 +28,13 @@ namespace DB.Utils
             }
         }
 
-        private void OnTriggerStay(Collider other)
+        /*private void OnTriggerStay(Collider other)
         {
             int layerTest = layerMask.value & (1 << other.gameObject.layer);
             if (layerTest > 0)
             {
                 OnStay?.Invoke(other);
             }
-        }
+        }*/
     }
 }

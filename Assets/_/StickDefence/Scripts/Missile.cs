@@ -25,6 +25,8 @@ public class Missile : MonoBehaviour
             }
         }
 
+        stick.OnBegin -= OnStartTouch;
+        stick.OnEnd -= OnStopTouch;
         Destroy(gameObject);
     }
 
@@ -42,12 +44,24 @@ public class Missile : MonoBehaviour
         camFollower = FindObjectOfType<CameraFollowerXZ>();
         rb = GetComponent<Rigidbody>();
         rb.isKinematic = true;
+        stick.OnBegin += OnStartTouch;
+        stick.OnEnd += OnStopTouch;
 
         camFollower.SwitchTarget(camPos, () =>
         {
             rb.isKinematic = false;
             canControl = true;
         });
+    }
+
+    private void OnStartTouch()
+    {
+
+    }
+
+    private void OnStopTouch()
+    {
+
     }
 
     public static bool canControl = false;

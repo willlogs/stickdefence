@@ -66,7 +66,7 @@ namespace DB.War.Stickman
             pathfindingInterval += UnityEngine.Random.Range(0f, 0.5f);
         }
 
-        private void FixedUpdate()
+        private void Update()
         {
             if (!isDead)
             {
@@ -99,7 +99,7 @@ namespace DB.War.Stickman
 
                 if (!lookForwardCondition.value)
                 {
-                    transform.forward = Vector3.Slerp(transform.forward, targetDiff, Time.fixedDeltaTime * lookRotationSpeed);
+                    transform.forward = Vector3.Slerp(transform.forward, targetDiff, Time.deltaTime * lookRotationSpeed);
                 }
             }
             else

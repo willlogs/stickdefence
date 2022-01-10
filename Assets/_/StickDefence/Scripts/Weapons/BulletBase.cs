@@ -7,7 +7,7 @@ namespace DB.War.Weapons
 {
     public class BulletBase : MonoBehaviour
     {
-        public UnityEvent OnContact;
+        public UnityEvent OnContact, OnGetShot;
         public int damage = 50;
 
         public void GetShot(Vector3 dir, Transform tar)
@@ -19,15 +19,20 @@ namespace DB.War.Weapons
 
         public void GetShot(Vector3 dir)
         {
+            if(hasLR)
+                lr.Clear();
             rb.velocity = dir.normalized * speed;
             transform.up = dir.normalized;
             gotShot = true;
+            OnGetShot?.Invoke();
         }
 
         [SerializeField] private Rigidbody rb;
         [SerializeField] private float speed, impactRange = 0;
         [SerializeField] private LayerMask impactLayerMask;
         [SerializeField] private bool drops = false;
+        [SerializeField] private bool hasLR = false;
+        [SerializeField] private TrailRenderer lr; 
 
         private Transform target;
         private bool hasTarget = false;
@@ -75,7 +80,7 @@ namespace DB.War.Weapons
                 }
             }
 
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
     }
 }

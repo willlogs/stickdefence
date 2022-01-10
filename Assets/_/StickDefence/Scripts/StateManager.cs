@@ -203,6 +203,14 @@ namespace DB.War
             }
         }
 
+        public void Reset()
+        {
+            PlayerPrefs.DeleteAll();
+            UnityEngine.SceneManagement.SceneManager.LoadScene(
+                UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex
+            );
+        }
+
         public void OneUpgraded(Upgradable u)
         {
             int unlockedCount = 0;
@@ -331,9 +339,14 @@ namespace DB.War
             OnStageUnlock?.Invoke();
         }
 
+        public UnityEvent OnWin;
         private void CheckIndex()
         {
             hasNext = index < stages.Length;
+            if (!hasNext)
+            {
+                OnWin?.Invoke();
+            }
         }
 
         int buildingCap = 4, curActive = 0;

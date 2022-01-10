@@ -575,6 +575,9 @@ MonoBehaviour:
   OnContact:
     m_PersistentCalls:
       m_Calls: []
+  OnGetShot:
+    m_PersistentCalls:
+      m_Calls: []
   damage: 20
   rb: {fileID: 4681651744326825183}
   speed: 20
@@ -583,6 +586,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   drops: 0
+  hasLR: 1
+  lr: {fileID: 7750573093492803951}
 --- !u!54 &4681651744326825183
 Rigidbody:
   m_ObjectHideFlags: 0
