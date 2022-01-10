@@ -59,7 +59,7 @@ namespace DB.War.Weapons
         [SerializeField] private List<Transform> targets;
         [SerializeField] private GunBase gun;
         [SerializeField] private Transform turret, aimT;
-        [SerializeField] private bool turretRotation, resetTurret, shootLevel;
+        [SerializeField] private bool turretRotation, resetTurret, shootLevel, setBC = true;
         [SerializeField] private BoolCondition hasTargetCondition;
         [SerializeField] private int forwMultiplier = 1;
 
@@ -81,7 +81,8 @@ namespace DB.War.Weapons
                     return;
                 }
 
-                hasTargetCondition.value = true;
+                if(setBC)
+                    hasTargetCondition.value = true;
                 if (turretRotation)
                 {
                     Vector3 forw = forwMultiplier * (t.position - turret.position);
@@ -94,7 +95,8 @@ namespace DB.War.Weapons
             }
             else
             {
-                hasTargetCondition.value = false;
+                if (setBC)
+                    hasTargetCondition.value = false;
                 if (turretRotation && resetTurret)
                 {
                     turret.localRotation = Quaternion.Slerp(

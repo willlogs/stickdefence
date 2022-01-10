@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/_/StickDefence/Scenes/stickman_test.unity
+    guid: 824d45fe40a0bc14e91860d5e20d3bae
   m_configObjects: {}

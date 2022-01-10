@@ -80,6 +80,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2fe423e583d7bd45af2f181327fd8ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targetEvent: 10
   OnGatherBox:
     m_PersistentCalls:
       m_Calls:
@@ -122,7 +123,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  OnReach70:
+  OnReachTarget:
+    m_PersistentCalls:
+      m_Calls: []
+  OnReachZero:
     m_PersistentCalls:
       m_Calls: []
   firstAmmoBox: {fileID: 223587620784232660}
@@ -306,7 +310,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 12
+  m_Radius: 15
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1745972300
 MonoBehaviour:

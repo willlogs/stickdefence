@@ -290,6 +290,10 @@ MonoBehaviour:
   rb: {fileID: 5419163741824844655}
   pathTraveler: {fileID: 5419163741824844654}
   lookForwardCondition: {fileID: 759826382729215921}
+  health:
+    capacity: 100
+    amount: 100
+  healthUI: {fileID: 0}
 --- !u!95 &5419163741824844648
 Animator:
   serializedVersion: 3
@@ -501,6 +505,7 @@ MonoBehaviour:
   turretRotation: 1
   resetTurret: 1
   shootLevel: 1
+  setBC: 0
   hasTargetCondition: {fileID: 759826382729215921}
   forwMultiplier: 1
 --- !u!114 &1503925726024086113

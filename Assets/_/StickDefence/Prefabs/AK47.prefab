@@ -92,7 +92,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  restBetweenShots: 0.4
+  restBetweenShots: 1
   bulletPrefab: {fileID: 1565650512526518565, guid: 330369816d166934f83de7d701c89c6a, type: 3}
   gunTargetT: {fileID: 0}
   bulletPointT: {fileID: 3699188568965340252}

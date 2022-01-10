@@ -6,6 +6,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Events;
 
 namespace DB.War
@@ -16,6 +17,7 @@ namespace DB.War
         public GameObject go;
         public Upgradable upgradable;
         public bool isUnlocked, isTower;
+        public StageUI ui;
     }
 
     [Serializable]
@@ -24,6 +26,7 @@ namespace DB.War
         public int need;
         public int supply;
         public bool isUnlocked;
+        public StageUI ui;
 
         public GameObject rewardPrefab;
         public int rewardNumber;
@@ -213,6 +216,11 @@ namespace DB.War
                     sp.isUnlocked = true;
                     flag = true;
                     newUnlock = sp;
+                    try
+                    {
+                        newUnlock.ui.Activate();
+                    }
+                    catch { }
                     unlockedCount++;
                     // call enemy wave if needed
                 }
@@ -262,11 +270,14 @@ namespace DB.War
 
         [SerializeField] private Building[] buildings;
 
+        [SerializeField] private Image stageUI, subStageUI;
+
         private bool hasNext = true, waiting = false;
 
         private void UnlockStage()
         {
             stages[index].isUnlocked = true;
+            stages[index].ui.Activate();
             stages[index].go.SetActive(true);
             BaseStage stage = stages[index];
             cameraFollower.ScaleOffset(stage.scaleX, stage.scaleY);
@@ -303,6 +314,12 @@ namespace DB.War
                 }
                 sp.upgradable.OnFullyUpgradedE += OneUpgraded;
             }
+
+            if(stage.sideUpgradable != null)
+            {
+                stage.sideUpgradable.Unlock();
+            }
+
             index++;
             waiting = true;
 
@@ -379,14 +396,21 @@ namespace DB.War
             // apply the save
             for (int i = 0; i < stages.Length; i++)
             {
-                index = i;
+                GameObject uiGO = Instantiate(stageUI.gameObject);
+                uiGO.transform.parent = stageUI.transform.parent;
+                uiGO.transform.localScale = stageUI.transform.localScale;
+                stages[i].ui = uiGO.GetComponent<StageUI>();
+                stages[i].ui.Deactivate();
+
                 if (stages[i].isUnlocked)
                 {
+                    index = i;
                     UnlockStage();
 
                     if (stages[i].sideUpgradable != null)
                     {
                         stages[i].sideUpgradable.Unlock();
+                        stages[i].ui.Activate();
                     }
 
                     foreach (StagePart sp in stages[i].children)
@@ -395,17 +419,39 @@ namespace DB.War
                         {
                             print("unlocked!");
                             sp.upgradable.Unlock();
+                            try
+                            {
+                                sp.ui.Activate();
+                            }
+                            catch { }
                         }
                     }
                 }
-                else
+
+                foreach (StagePart sp in stages[i].children)
                 {
-                    break;
+                    GameObject uiGO_ = Instantiate(subStageUI.gameObject);
+                    uiGO_.transform.parent = subStageUI.transform.parent;
+                    uiGO_.transform.localScale = subStageUI.transform.localScale;
+                    sp.ui = uiGO_.GetComponent<StageUI>();
+                    sp.ui.Deactivate(); ;
+
+                    if (sp.isUnlocked)
+                    {
+                        sp.ui.Activate();
+                    }
                 }
             }
+
+            txt.transform.parent.gameObject.SetActive(true);
+            txt.text = stages[index].supply + "/" + stages[index].need;
+
             CheckIndex();
 
-            foreach(Building b in buildings)
+            stageUI.gameObject.SetActive(false);
+            subStageUI.gameObject.SetActive(false);
+
+            foreach (Building b in buildings)
             {
                 b.SetUp();
                 if (b.active)

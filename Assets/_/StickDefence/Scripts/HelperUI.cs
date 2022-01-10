@@ -38,10 +38,14 @@ public class HelperUI : MonoBehaviour
 
     public void OnUpgradeTower()
     {
-        t4.SetActive(false);
-        indicator.SetActive(false);
-        PlayerPrefs.SetInt("done_tut", 1);
-        tutorialIndex = 5;
+        try
+        {
+            t4.SetActive(false);
+            indicator.SetActive(false);
+            PlayerPrefs.SetInt("done_tut", 1);
+            tutorialIndex = 5;
+        }
+        catch { }
     }
 
     public void Goto3()

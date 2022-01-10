@@ -14,6 +14,16 @@ namespace DB.War.Stickman
         public bool isTank, isChopper;
         public Transform mainGoalT, goalT;
 
+        public void Damage(int damage)
+        {
+            health.Amount -= damage;
+            if(health.Amount <= 0)
+            {
+                health.Amount = 0;
+                Die();
+            }
+        }
+
         public void Die()
         {
             isDead = true;
@@ -25,6 +35,7 @@ namespace DB.War.Stickman
                 Destroy(c);
             }
             OnKilledByGun?.Invoke(this);
+            Destroy(gameObject, 2);
         }
 
         [SerializeField] private Material deathMat;
@@ -38,10 +49,16 @@ namespace DB.War.Stickman
         [SerializeField] private StickPathTraveler pathTraveler;
         [SerializeField] private BoolCondition lookForwardCondition;
 
+        [SerializeField] private Health health;
+        [SerializeField] private HealthUI healthUI;
+
         private bool _isRunning = false, isDead = false, hasAnim;
 
         private void Awake()
         {
+            if(healthUI != null)
+                healthUI.SetHealth(health);
+
             hasAnim = animator != null;
             rb = GetComponent<Rigidbody>();
             goalT.parent = null;
