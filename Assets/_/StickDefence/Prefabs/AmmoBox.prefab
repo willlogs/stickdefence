@@ -98,6 +98,7 @@ MonoBehaviour:
   topT: {fileID: 2780022820991049220}
   parent: {fileID: 0}
   lerpSpeed: 25
+  rotLerpSpeed: 10
 --- !u!1 &7143021196500984379
 GameObject:
   m_ObjectHideFlags: 0

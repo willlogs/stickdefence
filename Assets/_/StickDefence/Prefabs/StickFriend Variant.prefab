@@ -30,66 +30,6 @@ Transform:
   m_Father: {fileID: 378316272801337844}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2900919987932930830
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3682631118391354343}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b93359086113274c986e1942fa68bf2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 1024
-  OnEnter:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3187759684878646054}
-        m_TargetAssemblyTypeName: DB.War.Weapons.Damager, Assembly-CSharp
-        m_MethodName: Enter
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  OnExit:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!114 &3187759684878646054
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3682631118391354343}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 891c917ea1a463a4089b67778cf6ef75, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  OnDamage:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6582814919302851514}
-        m_TargetAssemblyTypeName: DB.War.Stickman.Stickman, Assembly-CSharp
-        m_MethodName: Damage
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1 &7213415011590153439
 GameObject:
   m_ObjectHideFlags: 0
@@ -142,6 +82,7 @@ MonoBehaviour:
   turretRotation: 1
   resetTurret: 0
   shootLevel: 1
+  setBC: 1
   hasTargetCondition: {fileID: 175115019264264358}
   forwMultiplier: 1
 --- !u!135 &7477989139670870089
@@ -295,6 +236,14 @@ PrefabInstance:
     - target: {fileID: 4245370924884697745, guid: d44ec3bbdb7cfab4cafb7485b4ed5bbf, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7129753672415781568, guid: d44ec3bbdb7cfab4cafb7485b4ed5bbf, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7129753672415781568, guid: d44ec3bbdb7cfab4cafb7485b4ed5bbf, type: 3}
+      propertyPath: m_Color.r
+      value: 0.05724919
       objectReference: {fileID: 0}
     - target: {fileID: 8630177540854789199, guid: d44ec3bbdb7cfab4cafb7485b4ed5bbf, type: 3}
       propertyPath: m_Name
@@ -537,11 +486,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1734965463911473502, guid: e7f1589c9ba189544a327473451e021b, type: 3}
       propertyPath: health.amount
-      value: 200
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 1734965463911473502, guid: e7f1589c9ba189544a327473451e021b, type: 3}
       propertyPath: health.capacity
-      value: 200
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 1734965463911473502, guid: e7f1589c9ba189544a327473451e021b, type: 3}
       propertyPath: lookForwardCondition
@@ -657,6 +606,66 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7334933635777637359, guid: e7f1589c9ba189544a327473451e021b, type: 3}
   m_PrefabInstance: {fileID: 4848422619045923556}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2900919987932930830
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3682631118391354343}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b93359086113274c986e1942fa68bf2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 1024
+  OnEnter:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3187759684878646054}
+        m_TargetAssemblyTypeName: DB.War.Weapons.Damager, Assembly-CSharp
+        m_MethodName: Enter
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnExit:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &3187759684878646054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3682631118391354343}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 891c917ea1a463a4089b67778cf6ef75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnDamage:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6582814919302851514}
+        m_TargetAssemblyTypeName: DB.War.Stickman.Stickman, Assembly-CSharp
+        m_MethodName: Damage
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &5321748732414996851
 PrefabInstance:
   m_ObjectHideFlags: 0

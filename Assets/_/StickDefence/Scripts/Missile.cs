@@ -54,14 +54,15 @@ public class Missile : MonoBehaviour
         });
     }
 
+    bool touching = false;
     private void OnStartTouch()
     {
-
+        touching = true;
     }
 
     private void OnStopTouch()
     {
-
+        touching = false;
     }
 
     public static bool canControl = false;
@@ -69,10 +70,17 @@ public class Missile : MonoBehaviour
     {
         if (canControl)
         {
-            Vector3 control = stick._diff.normalized * controlPower * Time.deltaTime;
-            control.z = control.y;
-            control.y = 0;
-            rb.velocity += control;
+            if (touching)
+            {
+                Vector3 control = stick._diff.normalized * controlPower * Time.deltaTime;
+                control.z = control.y;
+                control.y = 0;
+                rb.velocity += control;
+            }
+            else
+            {
+                rb.velocity = new Vector3(rb.velocity.x * 0.8f, rb.velocity.y, rb.velocity.z * 0.8f);
+            }
         }
     }
 }

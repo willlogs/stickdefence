@@ -578,7 +578,7 @@ MonoBehaviour:
   OnGetShot:
     m_PersistentCalls:
       m_Calls: []
-  damage: 10
+  damage: 30
   rb: {fileID: 4681651744326825183}
   speed: 12
   impactRange: 0

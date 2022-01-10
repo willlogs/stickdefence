@@ -15,14 +15,22 @@ namespace DB.War.Stack
         }
 
         [SerializeField] private AmmoBox parent;
-        [SerializeField] private float lerpSpeed = 20f;
+        [SerializeField] private float lerpSpeed = 20f, rotLerpSpeed = 5f;
         private bool hasParent = false;
+        private Vector3 lastPos;
+
+        private void Start()
+        {
+            lastPos = parent.topT.position;
+        }
 
         private void FixedUpdate()
         {
             if (hasParent)
             {
-                transform.position = Vector3.Slerp(
+                Vector3 tp = (parent.topT.position + lastPos)/2;
+                lastPos = parent.topT.position;
+                transform.position = Vector3.Lerp(
                     transform.position,
                     parent.topT.position,
                     Time.fixedDeltaTime * lerpSpeed
@@ -31,7 +39,7 @@ namespace DB.War.Stack
                 transform.rotation = Quaternion.Slerp(
                     transform.rotation,
                     parent.transform.rotation,
-                    Time.fixedDeltaTime * lerpSpeed
+                    Time.fixedDeltaTime * rotLerpSpeed
                 );
             }
         }

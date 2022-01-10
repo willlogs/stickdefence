@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace DB.War.Stickman
 {
@@ -24,6 +25,7 @@ namespace DB.War.Stickman
             }
         }
 
+        public UnityEvent OnDeath;
         public void Die()
         {
             isDead = true;
@@ -35,6 +37,7 @@ namespace DB.War.Stickman
                 Destroy(c);
             }
             OnKilledByGun?.Invoke(this);
+            OnDeath?.Invoke();
             Destroy(gameObject, 2);
         }
 
@@ -66,9 +69,19 @@ namespace DB.War.Stickman
             pathfindingInterval += UnityEngine.Random.Range(0f, 0.5f);
         }
 
+        [SerializeField] private bool isMainPlayer;
+        private void FixedUpdate()
+        {
+            if (isMainPlayer && !isDead)
+            {
+                targetT.position = goalT.position;
+                MoveStickman();
+            }
+        }
+
         private void Update()
         {
-            if (!isDead)
+            if (!isMainPlayer && !isDead)
             {
                 targetT.position = goalT.position;
                 MoveStickman();

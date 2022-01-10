@@ -36,7 +36,7 @@ namespace DB.War.Stickman
 
             if (isDragging)
             {
-                goalT.position = transform.position + new Vector3(joystick._diff.x, 0, joystick._diff.y) * Time.deltaTime;
+                goalT.position = transform.position + new Vector3(joystick._diff.x, 0, joystick._diff.y) * Time.deltaTime * 15;
             }
             else
             {
