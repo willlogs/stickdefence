@@ -25,7 +25,7 @@ namespace DB.War
     {
         public int need;
         public int supply;
-        public bool isUnlocked;
+        public bool isUnlocked, bypass;
         public StageUI ui;
 
         public GameObject rewardPrefab;
@@ -211,6 +211,13 @@ namespace DB.War
             );
         }
 
+        public void ResetFromSave()
+        {
+            UnityEngine.SceneManagement.SceneManager.LoadScene(
+                UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex
+            );
+        }
+
         public void OneUpgraded(Upgradable u)
         {
             int unlockedCount = 0;
@@ -331,11 +338,17 @@ namespace DB.War
             index++;
             waiting = true;
 
-            unstackerGO.GetComponent<Unstacker>().ForceExit();
-            unstackerGO.SetActive(false);
-            txt.transform.parent.gameObject.SetActive(false);
-
             CheckIndex();
+            if(stage.bypass && hasNext)
+            {
+                unstackerGO.GetComponent<BoolCondition>().value = true;
+            }
+            else
+            {
+                unstackerGO.GetComponent<Unstacker>().ForceExit();
+                unstackerGO.SetActive(false);
+                txt.transform.parent.gameObject.SetActive(false);
+            }
             OnStageUnlock?.Invoke();
         }
 
@@ -357,7 +370,7 @@ namespace DB.War
                 AddBuilding();
                 Save();
 
-                yield return new WaitForSeconds(UnityEngine.Random.Range(5f, 10f));
+                yield return new WaitForSeconds(UnityEngine.Random.Range(25f, 30f));
             }
         }
 

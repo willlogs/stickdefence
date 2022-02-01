@@ -58,10 +58,10 @@ namespace DB.Utils
             );
 
             vp.z = 0;
-            img.transform.right = -vp.normalized;
             bool isClipped = clipped.x != vp.x || clipped.y != vp.y;
             if (isClipped)
             {
+                img.transform.right = -vp.normalized;
                 img.sprite = offScreen;
                 tp = (tp - pT.position).normalized * Screen.width * 0.8f;
                 tp.y = tp.z;
@@ -70,6 +70,7 @@ namespace DB.Utils
             }
             else
             {
+                img.transform.right = Vector3.right;
                 img.sprite = onScreen;
                 img.rectTransform.position = mc.WorldToScreenPoint(tp);
             }

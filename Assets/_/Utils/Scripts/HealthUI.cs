@@ -73,6 +73,8 @@ namespace DB.Utils
             {
                 _sliderBG.transform.rotation = Quaternion.identity;
                 _sliderIMG.transform.rotation = Quaternion.identity;
+
+                transform.forward = transform.position - Camera.main.transform.position;
             }
         }
     }

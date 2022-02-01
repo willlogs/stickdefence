@@ -2,16 +2,20 @@ using DB.War.Stickman;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace DB.War
 {
     public class WaveManager : MonoBehaviour
     {
+        public UnityEvent OnWave;
+
         public void DoWave()
         {
             if (!done)
             {
                 done = true;
+                OnWave?.Invoke();
                 StartCoroutine(DoWaveWithDelay());
             }
         }

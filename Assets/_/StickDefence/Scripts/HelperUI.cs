@@ -10,7 +10,10 @@ public class HelperUI : MonoBehaviour
 {
     public void OnAmmoxGathered()
     {
-        if(tutorialIndex == 0)
+        if (isDone)
+            return;
+
+        if (tutorialIndex == 0)
         {
             t01.SetActive(false);
             GotoNextStage();
@@ -20,6 +23,9 @@ public class HelperUI : MonoBehaviour
     public int enemiesCount = 0;
     public void OnEnemyDied()
     {
+        if (isDone)
+            return;
+
         enemiesCount--;
         if(enemiesCount <= 0)
         {
@@ -30,7 +36,10 @@ public class HelperUI : MonoBehaviour
 
     public void OnUpgradeStage()
     {
-        if(tutorialIndex == 1)
+        if (isDone)
+            return;
+
+        if (tutorialIndex == 1)
         {
             GotoNextStage();
         }
@@ -38,18 +47,29 @@ public class HelperUI : MonoBehaviour
 
     public void OnUpgradeTower()
     {
+        if (isDone)
+            return;
+
         try
         {
-            t4.SetActive(false);
-            indicator.SetActive(false);
-            PlayerPrefs.SetInt("done_tut", 1);
             tutorialIndex = 5;
+            PlayerPrefs.SetInt("done_tut", 1);
+            t4.SetActive(false);
+            t0.SetActive(false);
+            t1.SetActive(false);
+            t2.SetActive(false);
+            t3.SetActive(false);
+            t01.SetActive(false);
+            indicator.SetActive(false);
         }
         catch { }
     }
 
     public void Goto3()
     {
+        if (isDone)
+            return;
+
         if (tutorialIndex == 2)
         {
             GotoNextStage();
@@ -58,7 +78,10 @@ public class HelperUI : MonoBehaviour
 
     public void Goto4()
     {
-        if(tutorialIndex == 3)
+        if (isDone)
+            return;
+
+        if (tutorialIndex == 3)
         {
             GotoNextStage();
         }
@@ -88,6 +111,9 @@ public class HelperUI : MonoBehaviour
     GameObject indicator;
     private void Stage0()
     {
+        if (isDone)
+            return;
+
         t0.SetActive(true);
         StartCoroutine(TickStage0());
 
@@ -126,6 +152,9 @@ public class HelperUI : MonoBehaviour
 
     private void Stage1()
     {
+        if (isDone)
+            return;
+
         try
         {
             t0.SetActive(false);
@@ -175,6 +204,9 @@ public class HelperUI : MonoBehaviour
 
     private void Stage2()
     {
+        if (isDone)
+            return;
+
         t1.SetActive(false);
         t2.SetActive(true);
         indicator.SetActive(false);
@@ -224,6 +256,9 @@ public class HelperUI : MonoBehaviour
 
     private void Stage3()
     {
+        if (isDone)
+            return;
+
         t2.SetActive(false);
         t3.SetActive(true);
         indicator.SetActive(false);
@@ -273,6 +308,9 @@ public class HelperUI : MonoBehaviour
 
     private void Stage4()
     {
+        if (isDone)
+            return;
+
         t3.SetActive(false);
         t4.SetActive(true);
         indicator.SetActive(false);
@@ -333,7 +371,13 @@ public class HelperUI : MonoBehaviour
                 GameObject dot = dots[di++];
                 dot.SetActive(true);
                 Vector3 pos = Vector3.MoveTowards(corners[i], corners[i + 1], distance);
+
+                Vector3 diff = corners[i + 1] - corners[i];
+                diff = diff.normalized;
+
                 dot.transform.position = pos;
+                dot.transform.up = diff;
+
                 distance += betweenDots;
 
                 // break
@@ -387,11 +431,15 @@ public class HelperUI : MonoBehaviour
         }
     }
 
-    private void Start()
+    bool isDone = false;
+    private void Awake()
     {
         t0.SetActive(false);
         t1.SetActive(false);
         t2.SetActive(false);
+        t01.SetActive(false);
+        t3.SetActive(false);
+        t4.SetActive(false);
 
         GameObject dgo = new GameObject();
         for(int i = 0; i < 100; i++)
@@ -402,8 +450,10 @@ public class HelperUI : MonoBehaviour
             dots.Add(go);
         }
 
-        if(PlayerPrefs.GetInt("done_tut") == 0)
+        if (PlayerPrefs.GetInt("done_tut") == 0)
             Stage0();
+        else
+            isDone = true;
     }
 
     /*private void OnDrawGizmos()

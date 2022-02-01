@@ -4908,6 +4908,7 @@ MonoBehaviour:
         m_CallState: 2
   stacker: {fileID: 0}
   condition: {fileID: 7940567846495435703}
+  particle: {fileID: 7940567846475634041}
 --- !u!114 &1145766648
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -34,7 +34,33 @@ namespace DB.War.Stack
 
         [SerializeField] private Stacker stacker;
         [SerializeField] private BoolCondition condition;
+        [SerializeField] private ParticleSystem particle;
         private bool hasStacker = false;
+
+        private void Start()
+        {
+            Stacker st = FindObjectOfType<Stacker>();
+            st.OnMoreThanOneE += Activate;
+            st.OnReachZeroE += Deactivate;
+            if(st.score > 0)
+            {
+                Activate();
+            }
+            else
+            {
+                Deactivate();
+            }
+        }
+
+        private void Activate()
+        {
+            particle.Play();
+        }
+
+        private void Deactivate()
+        {
+            particle.Stop();
+        }
 
         private void Update()
         {

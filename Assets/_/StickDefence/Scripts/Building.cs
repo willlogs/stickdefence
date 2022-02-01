@@ -73,7 +73,7 @@ namespace DB.War
                 if (active)
                     curStage.Tick();
 
-                yield return new WaitForSeconds(UnityEngine.Random.Range(1f, 5f));
+                yield return new WaitForSeconds(UnityEngine.Random.Range(15f, 17f));
             }
         }
     }

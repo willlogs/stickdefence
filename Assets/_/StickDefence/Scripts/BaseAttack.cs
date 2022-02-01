@@ -18,8 +18,20 @@ public class BaseAttack : MonoBehaviour
         }
     }
 
+    public void ShowWarning()
+    {
+        GameObject go = Instantiate(attackInformerPrefab, canvas.transform);
+        RectTransform rt = go.GetComponent<RectTransform>();
+        rt.anchoredPosition = new Vector2(0, rt.anchoredPosition.y);
+        go.transform.localScale = Vector3.one;
+    }
+
+    [SerializeField] private Canvas canvas;
+    [SerializeField] private GameObject attackInformerPrefab;
+
     private void Attack(Transform target)
     {
+        ShowWarning();
         foreach(Enemy e in FindObjectsOfType<Enemy>())
         {
             e.SetTarget(target);

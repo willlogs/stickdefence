@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using UnityEngine.Events;
+using System;
 
 namespace DB.War.Stack
 {
@@ -11,6 +12,7 @@ namespace DB.War.Stack
     {
         public int targetEvent = 10;
         public UnityEvent OnGatherBox, OnReduceBox, OnReachTarget, OnReachZero;
+        public event Action OnReachZeroE, OnMoreThanOneE;
 
         public void GatherBox(Collider box)
         {
@@ -27,6 +29,7 @@ namespace DB.War.Stack
             {
                 score = 0;
                 OnReachZero?.Invoke();
+                OnReachZeroE?.Invoke();
                 return false;
             }
 
@@ -78,6 +81,7 @@ namespace DB.War.Stack
             {
                 firstAmmoBox.gameObject.SetActive(true);
                 score++;
+                OnMoreThanOneE?.Invoke();
                 return;
             }
 
