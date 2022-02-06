@@ -42,8 +42,20 @@ namespace DB.War.Stickman
             StartCoroutine(PathfindAuto());
         }
 
+        public void LockGoal()
+        {
+            autoPathfindFromStart = false;
+            StopAllCoroutines();
+
+            if (target != null)
+            {
+                goalT.parent = target;
+                goalT.localPosition = Vector3.zero;
+            }
+        }
+
         [SerializeField] private float betweenPathFinds = 1f, stopDistance = 0.1f;
-        [SerializeField] private bool autoPathfindFromStart = false, shortCircuit, bypassObstacle;
+        [SerializeField] private bool autoPathfindFromStart = false, shortCircuit, bypassObstacle, oneShotPathFinding;
         [SerializeField] private Transform target;
 
         [SerializeField] private Transform goalT;
@@ -80,6 +92,8 @@ namespace DB.War.Stickman
             if (isWaitingForNextCorner)
             {
                 GoToNextCorner();
+            }else if (oneShotPathFinding){
+                LockGoal();
             }
         }
 

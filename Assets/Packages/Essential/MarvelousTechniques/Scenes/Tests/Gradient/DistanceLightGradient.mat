@@ -8,12 +8,12 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: DistanceLightGradient
-  m_Shader: {fileID: 4800000, guid: 31f5ef81e1c5045c08fccaba0451f912, type: 3}
+  m_Shader: {fileID: 4800000, guid: 1f7a6e05a3c294e3cb9d3468fdc3a657, type: 3}
   m_ShaderKeywords: USE_GRADIENT
   m_LightmapFlags: 5
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 2000
+  m_CustomRenderQueue: -1
   stringTagMap: {}
   disabledShaderPasses: []
   m_SavedProperties:
@@ -48,7 +48,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: c3323d8a6395d43d883c6c47a4e924d1, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -88,6 +88,7 @@ Material:
     - _LightmapPower: 1
     - _MainTexPower: 1
     - _Metallic: 0
+    - _Middle: 0.175
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
@@ -101,14 +102,17 @@ Material:
     - _UVSec: 0
     - _UseDirLight: 0
     - _UseFogDistance: 0
+    - _UseFogStaticStart: 0
     - _UseLightMap: 0
     - _ZWrite: 1
     - _additiveBlend: 0
     m_Colors:
     - _AmbientColor: {r: 0.5, g: 0.1, b: 0.2, a: 0}
+    - _BottomColor: {r: 0.56545925, g: 0.81163085, b: 0.9150943, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _FogColor: {r: 1, g: 1, b: 1, a: 1}
+    - _FogStaticStartPos: {r: 0, g: 0, b: 0, a: 1}
     - _FrontColor: {r: 0.7, g: 0.7, b: 0.7, a: 0}
     - _FrontColorBottom: {r: 0.9191176, g: 0.72988755, b: 0.72988755, a: 0}
     - _LightDirF: {r: 0, g: 0, b: -1, a: 1}
@@ -119,11 +123,13 @@ Material:
     - _LightmapColor: {r: 0, g: 0, b: 0, a: 0}
     - _MainColor: {r: 0.99264705, g: 0.60580665, b: 0.60580665, a: 0}
     - _MainColorBottom: {r: 1, g: 0.73, b: 0.117, a: 0}
+    - _MidColor: {r: 0.6156863, g: 0.8862746, b: 1, a: 0}
     - _RightColor: {r: 0.9, g: 0.9, b: 0.9, a: 0}
     - _RightColorBottom: {r: 0.65854317, g: 0.6163495, b: 0.88235295, a: 0}
     - _RimColor: {r: 0.7553752, g: 0.7352941, b: 1, a: 0}
     - _RimColorBottom: {r: 1, g: 0.75735295, b: 0.75735295, a: 0}
     - _SpecColorc: {r: 1, g: 1, b: 1, a: 0}
-    - _TopColor: {r: 0.90882355, g: 1, b: 0.78676474, a: 0}
+    - _TintColor: {r: 1, g: 0.9669811, b: 0.9669811, a: 1}
+    - _TopColor: {r: 0.6156863, g: 1, b: 0.9034148, a: 0}
     - _TopColorBottom: {r: 0.9677067, g: 0.9852941, b: 0.66652244, a: 0}
   m_BuildTextureStacks: []

@@ -14,8 +14,13 @@ namespace DB.War
 
         public bool GoToNextStage()
         {
-            if (!active && stageIndex < stageGOs.Length)
+            if (!active)
             {
+                if (stageIndex >= stageGOs.Length)
+                {
+                    stageIndex = 0;
+                }
+
                 curStage = stageGOs[stageIndex++];
                 curStage.gameObject.SetActive(true);
                 curStage.Activate();

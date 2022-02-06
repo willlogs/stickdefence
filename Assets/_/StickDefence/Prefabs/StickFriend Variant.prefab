@@ -498,7 +498,7 @@ PrefabInstance:
       objectReference: {fileID: 175115019264264358}
     - target: {fileID: 3812781890678770250, guid: e7f1589c9ba189544a327473451e021b, type: 3}
       propertyPath: shortCircuit
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3812781890678770250, guid: e7f1589c9ba189544a327473451e021b, type: 3}
       propertyPath: stopDistance
@@ -511,6 +511,10 @@ PrefabInstance:
     - target: {fileID: 3812781890678770250, guid: e7f1589c9ba189544a327473451e021b, type: 3}
       propertyPath: betweenPathFinds
       value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3812781890678770250, guid: e7f1589c9ba189544a327473451e021b, type: 3}
+      propertyPath: oneShotPathFinding
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3812781890678770250, guid: e7f1589c9ba189544a327473451e021b, type: 3}
       propertyPath: autoPathfindFromStart
