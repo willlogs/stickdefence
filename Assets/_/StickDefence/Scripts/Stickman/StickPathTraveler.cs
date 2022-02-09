@@ -1,4 +1,5 @@
 using Sirenix.OdinInspector;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,6 +9,8 @@ namespace DB.War.Stickman
 {
     public class StickPathTraveler : MonoBehaviour
     {
+        public event Action OnLock;
+
         [Button]
         public void GoToLocation(Vector3 location)
         {
@@ -51,7 +54,11 @@ namespace DB.War.Stickman
             {
                 goalT.parent = target;
                 goalT.localPosition = Vector3.zero;
+                transform.parent = target;
+                transform.localPosition = Vector3.zero;
             }
+
+            OnLock?.Invoke();
         }
 
         [SerializeField] private float betweenPathFinds = 1f, stopDistance = 0.1f;

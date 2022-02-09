@@ -12,7 +12,7 @@ namespace DB.War.Stickman
         public event Action OnGoalReached;
         public event Action<Stickman> OnKilledByGun;
 
-        public bool isTank, isChopper;
+        public bool isTank, isChopper, readSquadRB;
         public Transform mainGoalT, goalT;
 
         public void Damage(int damage)
@@ -23,6 +23,13 @@ namespace DB.War.Stickman
                 health.Amount = 0;
                 Die();
             }
+        }
+
+        public void ReadSquadRB(Rigidbody srb)
+        {
+            squadRB = srb;
+            readSquadRB = true;
+            rb.isKinematic = true;
         }
 
         public UnityEvent OnDeath;
@@ -48,7 +55,7 @@ namespace DB.War.Stickman
         [SerializeField] private Animator animator;
         [SerializeField] private Transform targetT; // move to goal and look at target
         [SerializeField] private float runningSpeed, goalDistanceThreshold, lookRotationSpeed = 5, pathfindingInterval = 0.1f;
-        [SerializeField] private Rigidbody rb;
+        [SerializeField] private Rigidbody rb, squadRB;
         [SerializeField] private StickPathTraveler pathTraveler;
         [SerializeField] private BoolCondition lookForwardCondition;
 
@@ -72,7 +79,11 @@ namespace DB.War.Stickman
         [SerializeField] private bool isMainPlayer;
         private void FixedUpdate()
         {
-            if (isMainPlayer && !isDead)
+            if (isMainPlayer && readSquadRB)
+            {
+                ReadSRB();
+            }
+            else if (isMainPlayer && !isDead)
             {
                 targetT.position = goalT.position;
                 MoveStickman();
@@ -81,7 +92,11 @@ namespace DB.War.Stickman
 
         private void Update()
         {
-            if (!isMainPlayer && !isDead)
+            if (!isMainPlayer && readSquadRB)
+            {
+                ReadSRB();
+            }
+            else if (!isMainPlayer && !isDead)
             {
                 targetT.position = goalT.position;
                 MoveStickman();
@@ -123,6 +138,43 @@ namespace DB.War.Stickman
                     if (hasAnim)
                         animator.SetBool("Run", false);
                     OnGoalReached?.Invoke();
+                }
+            }
+        }
+
+        private void ReadSRB()
+        {
+            Vector3 vel = squadRB.velocity;
+            vel.y = 0;
+            Vector3 targetDiff = targetT.position - transform.position;
+            targetDiff.y = 0;
+
+            float goalTargetDot = Vector3.Dot(vel, targetDiff);
+
+            if (hasAnim)
+                animator.SetFloat("WalkSpeed", Mathf.Sign(goalTargetDot) * (vel.magnitude/10));
+
+            if (vel.magnitude > 1f)
+            {
+                if (!_isRunning)
+                {
+                    _isRunning = true;
+                    if (hasAnim)
+                        animator.SetBool("Run", true);
+                }
+
+                if (!lookForwardCondition.value)
+                {
+                    transform.forward = Vector3.Slerp(transform.forward, vel, Time.deltaTime * lookRotationSpeed);
+                }
+            }
+            else
+            {
+                if (_isRunning)
+                {
+                    _isRunning = false;
+                    if (hasAnim)
+                        animator.SetBool("Run", false);
                 }
             }
         }

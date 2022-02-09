@@ -8,13 +8,15 @@ namespace DB.War.Stickman
     public class StickController : MonoBehaviour
     {
         [SerializeField] private TouchStick joystick;
-        [SerializeField] private Transform goalT;
+        [SerializeField] private Rigidbody rb;
+
+        [SerializeField] private float velCap = 10f;
+        [SerializeField] private float acceleration = 2f;
 
         private bool isDragging = false;
 
         private void Awake()
         {
-            goalT.parent = null;
             joystick.OnBegin += OnStartDrag;
             joystick.OnEnd += OnStopDrag;
         }
@@ -36,11 +38,17 @@ namespace DB.War.Stickman
 
             if (isDragging)
             {
-                goalT.position = transform.position + new Vector3(joystick._diff.x, 0, joystick._diff.y) * Time.deltaTime * 15;
+                Vector3 diff = new Vector3(joystick._diff.x, 0, joystick._diff.y) * Time.deltaTime * acceleration;
+                rb.velocity += diff;
+
+                if(rb.velocity.magnitude > velCap)
+                {
+                    rb.velocity = velCap * rb.velocity.normalized;
+                }
             }
             else
             {
-                goalT.position = transform.position;
+                Vector3 diff = Vector3.zero;
             }
         }
     }
